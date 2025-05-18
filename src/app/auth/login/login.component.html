@@ -1,0 +1,39 @@
+<div class="limiter">
+  <div class="login_box">
+    <div class = "inside_login">
+      <h1 class="title">
+        Login
+      </h1>
+      <form [formGroup]="logInUser" class=" validate-form">
+        <div class="email_field validate-input" data-validate="Enter password">
+          <input type="texts" name="Username" formControlName="Username" placeholder="Username" />
+          <span  data-placeholder="&#xf191;"></span>
+        </div>
+      </form>
+      <form [formGroup]="logInUser" class=" validate-form">
+        <div class="email_field validate-input" data-validate="Enter password">
+          <input type="texts" name="Email" formControlName="Email" placeholder="Email" />
+          <span  data-placeholder="&#xf191;"></span>
+        </div>
+      </form>
+      <form [formGroup]="logInUser" class="buttons_box validate-form">
+        <div class="passwd_field validate-input" data-validate="Enter password">
+          <input type="password" name="Password" formControlName="Password" placeholder="Password" />
+          <span data-placeholder="&#xf191;"></span>
+        </div>
+      </form>
+      <div class style="display: flex; justify-content: space-between;">
+        <div>
+          <button class="login_button" (click)="logInUserBtn($event)">
+            Logearse
+          </button>
+        </div>
+        <div>
+          <button class="register_button" (click)="registerUserBtn($event)">
+            Registrarse
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

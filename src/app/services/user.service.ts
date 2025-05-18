@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { User } from './../core/models/User';
+import { HttpClient } from '@angular/common/http';
+import { Response } from '../core/models/Response';
+import { tap } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class UserService {
+  private baseUrl = 'http://localhost:8080/';
+  private header = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: {},
+  };
+
+  constructor(private http: HttpClient) {}
+
+  public register(user: User) {
+    console.log(user);
+  }
+
+  public login(user: User) {
+    return this.http
+      .post<any>(`${this.baseUrl}user/login`, { ...user }, this.header)
+      .pipe(
+        tap((data: Response) => {
+          if (data.Error) throw data.Error;
+
+          sessionStorage.setItem('isLogedUser', '1');
+          user = data.Data;
+
+          return data;
+        })
+      );
+  }
+}
