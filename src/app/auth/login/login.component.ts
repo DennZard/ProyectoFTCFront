@@ -3,7 +3,7 @@ import { UserService } from '../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { User } from '../../core/models/User';
+import { userLogin } from '../../core/interfaces/UserLogin';
 
 @Component({
   selector: 'app-login',
@@ -22,9 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.logInUser = this.fb.group({
-      Username: ['', [Validators.required]],
-      Email: ['', [Validators.required, Validators.email]],
-      Password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -34,10 +33,11 @@ export class LoginComponent implements OnInit {
 
   logInUserBtn($event: MouseEvent) {
     $event.preventDefault();
+    console.log(this.logInUser)
     if (this.validateCredentials(this.logInUser.value)) {
       this.userService.login(this.logInUser.value).subscribe(
         (resp) => {
-          this.router.navigateByUrl('main/libro');
+          this.router.navigateByUrl('/main');
         },
         (err) => {
           Swal.fire(
@@ -50,11 +50,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  validateCredentials({email, password, username }: User) {
-    console.log(this.logInUser.get('Password').value);
-    console.log(this.logInUser.get('Email').value);
-    console.log(this.logInUser.get('Username').value);
-    if (!email || !password || !username) {
+  validateCredentials({email, password }: userLogin) {
+    console.log(this.logInUser.get('password').value);
+    console.log(this.logInUser.get('email').value);
+    if (!email || !password) {
       Swal.fire(
         'Credenciales invalidas',
         'Debes introducir valores en todos campos',

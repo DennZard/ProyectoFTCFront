@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class DeliveryService {
+export class EmployeeService {
   private baseUrl = 'http://localhost:8080/';
   private header = {
     headers: {
@@ -14,4 +14,13 @@ export class DeliveryService {
   };
 
   constructor(private http: HttpClient) {}
+
+  public changeDeliveryStatus() {
+
+  }
+
+  public loginEmployee() {
+
+  }
+
 }

@@ -19,7 +19,19 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   public register(user: User) {
-    console.log(user);
+    console.log({ ...user });
+
+    return this.http
+      .post<any>(`${this.baseUrl}user/register`, { ...user }, this.header)
+      .pipe(
+        tap((data: Response) => {
+          if (data.Error) throw data.Error;
+          // sessionStorage.setItem('isLogedUser', '1');
+          // sessionStorage.setItem('userId', `${data.Data}`);
+
+          return data;
+        })
+      );
   }
 
   public login(user: User) {
@@ -31,7 +43,7 @@ export class UserService {
 
           sessionStorage.setItem('isLogedUser', '1');
           user = data.Data;
-
+          console.log(data)
           return data;
         })
       );
