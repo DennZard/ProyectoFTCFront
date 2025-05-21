@@ -22,7 +22,10 @@ export class RegisterComponent implements OnInit {
   registerUser() {
     if (this.userRegisterForm.valid) {
       this.userService.register(this.userRegisterForm.value).subscribe(
-        () => {},
+        (resp) => {
+          this.router.navigateByUrl('main');
+          console.log(sessionStorage.getItem('userId'));
+        },
         (err) => {
           Swal.fire(
             'Usuario Existente',

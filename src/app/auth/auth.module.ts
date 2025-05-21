@@ -6,13 +6,16 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-
+import { PasswordModule } from 'primeng/password';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent],
+    RegisterComponent,
+  ],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -21,6 +24,10 @@ import { InputTextModule } from 'primeng/inputtext';
     InputGroupModule,
     InputGroupAddonModule,
     InputTextModule,
+    ButtonModule,
+    InputTextModule,
+    PasswordModule,
+    CardModule,
   ],
 })
 export class AuthModule {}

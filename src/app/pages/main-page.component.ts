@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main-page',
@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit {
+  usuario: any
+  ngOnInit(): void {
+    this.usuario = sessionStorage.getItem("user")
+  }
 
 }

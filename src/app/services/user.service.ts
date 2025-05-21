@@ -26,8 +26,8 @@ export class UserService {
       .pipe(
         tap((data: Response) => {
           if (data.Error) throw data.Error;
-          // sessionStorage.setItem('isLogedUser', '1');
-          // sessionStorage.setItem('userId', `${data.Data}`);
+          sessionStorage.setItem('isLogedUser', '1');
+          sessionStorage.setItem('userId', `${data.Data}`);
 
           return data;
         })
@@ -42,8 +42,9 @@ export class UserService {
           if (data.Error) throw data.Error;
 
           sessionStorage.setItem('isLogedUser', '1');
-          user = data.Data;
-          console.log(data)
+          // sessionStorage.setItem('user', JSON.stringify(data.Data));
+          // user = data.Data;
+          console.log(sessionStorage.getItem("user"))
           return data;
         })
       );

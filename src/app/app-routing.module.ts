@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './pages/main-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { PagesRoutingModule } from './pages/pages-routing.module';
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent, pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
-    AuthRoutingModule
+    AuthRoutingModule,
+    PagesRoutingModule
   ],
   exports: [RouterModule]
 })
