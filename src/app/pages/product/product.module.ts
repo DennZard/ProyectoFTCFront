@@ -4,16 +4,20 @@ import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { DetailsComponent } from './details/details.component';
+import { CardModule } from 'primeng/card';
+
 
 
 @NgModule({
   declarations: [
     AllComponent,
-    DetailsComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
-    ProductRoutingModule
-  ]
+    ProductRoutingModule,
+    CardModule,
+
+  ],
 })
-export class ProductModule { }
+export class ProductModule {}

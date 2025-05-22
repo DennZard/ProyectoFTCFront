@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { provideHttpClient } from '@angular/common/http';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { provideHttpClient } from '@angular/common/http';
     RouterModule,
     AuthModule,
     PagesModule,
+    CardModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent],

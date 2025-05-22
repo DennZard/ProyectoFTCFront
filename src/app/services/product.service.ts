@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from '../core/models/Product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = 'http://localhost:8080/product/';
   private header = {
     headers: {
       'Content-Type': 'application/json',
@@ -19,8 +20,8 @@ export class ProductService {
 
   }
 
-  public getDetails() {
-
+  public getDetails(id: number) {
+    return this.http.get<Product>(`${this.baseUrl}details?id=` + id);
   }
 
   public filterByPrefix() {
@@ -28,6 +29,6 @@ export class ProductService {
   }
 
   public getAll() {
-
+    return this.http.get<Product[]>(`${this.baseUrl}all`, this.header);
   }
 }
