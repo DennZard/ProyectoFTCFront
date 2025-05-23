@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-company',
@@ -6,6 +7,16 @@ import { Component } from '@angular/core';
   templateUrl: './create-company.component.html',
   styleUrl: './create-company.component.css'
 })
-export class CreateCompanyComponent {
+export class CreateCompanyComponent implements OnInit {
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    const logged = sessionStorage.getItem('isLoggedUser');
+    console.log(logged);
+    if (logged != "1") {
+      this.router.navigateByUrl("main/login")
+    }
+  }
 
 }

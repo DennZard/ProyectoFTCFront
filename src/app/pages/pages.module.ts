@@ -4,6 +4,10 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MainPageComponent } from './main-page.component';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
+import { CompanyRoutingModule } from './company/company-routing.module';
+import { DeliveryRoutingModule } from './delivery/delivery-routing.module';
+import { EmployeeRoutingModule } from './employee/employee-routing.module';
+import { AdminRoutingModule } from './admin/admin-routing.module';
 
 
 
@@ -13,8 +17,12 @@ import { CardModule } from 'primeng/card';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule,
     RouterModule,
+    PagesRoutingModule,
+    CompanyRoutingModule,
+    DeliveryRoutingModule,
+    EmployeeRoutingModule,
+    AdminRoutingModule,
     CardModule
   ]
 })

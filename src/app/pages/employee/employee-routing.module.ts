@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginEmployeeComponent } from './login-employee/login-employee.component';
+import { DeliveryChangeComponent } from './delivery-change/delivery-change.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'login', component: LoginEmployeeComponent, data: { title: 'Login'}},
+  {path: ':delivery-change :id', component:DeliveryChangeComponent, data: { title: 'Delivery'}},
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
