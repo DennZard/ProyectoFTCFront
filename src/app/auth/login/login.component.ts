@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { userLogin } from '../../core/interfaces/UserLogin';
+import { User } from '../../core/models/User';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,11 @@ import { userLogin } from '../../core/interfaces/UserLogin';
 })
 export class LoginComponent implements OnInit {
   logInUser: FormGroup;
-
+  userId: any;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -33,10 +34,12 @@ export class LoginComponent implements OnInit {
 
   logInUserBtn($event: MouseEvent) {
     $event.preventDefault();
-    console.log(this.logInUser)
+    console.log(this.logInUser);
     if (this.validateCredentials(this.logInUser.value)) {
       this.userService.login(this.logInUser.value).subscribe(
-        (resp) => {
+        (data) => {
+          this.userId = data
+          sessionStorage.setItem("user", JSON.stringify(this.userId))
           this.router.navigateByUrl('/main');
         },
         (err) => {
@@ -50,7 +53,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  validateCredentials({email, password }: userLogin) {
+  validateCredentials({ email, password }: userLogin) {
     console.log(this.logInUser.get('password').value);
     console.log(this.logInUser.get('email').value);
     if (!email || !password) {
