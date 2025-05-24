@@ -30,6 +30,13 @@ export class DetailsComponent implements OnInit {
       this.product = product
       console.log(this.product)
     });
+  }
+
+  buyProduct(money: number) {
+    money = 100
+    this.productService.buyProduct(this.id, money).subscribe((compra:boolean) => {
+      console.log(compra)
+    })
 
   }
 

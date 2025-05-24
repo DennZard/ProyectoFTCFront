@@ -34,7 +34,6 @@ export class UserService {
           this.userData = JSON.stringify(`${data.Data}`);
           console.log(JSON.parse(this.userData))
           sessionStorage.setItem('userId', `${data.Data}`);
-
           return data;
         })
       );
