@@ -16,16 +16,16 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  public buyProduct() {
-
+  public buyProduct(id: number, money:number) {
+    return this.http.put(`${this.baseUrl}buy`, {id, money})
   }
 
   public getDetails(id: number) {
     return this.http.get<Product>(`${this.baseUrl}details?id=` + id);
   }
 
-  public filterByPrefix() {
-
+  public filterByPrefix(prefix: String) {
+    return this.http.get<Product>(`${this.baseUrl}prefix?rpefix=` + prefix);
   }
 
   public getAll() {
