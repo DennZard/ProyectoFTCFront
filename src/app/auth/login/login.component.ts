@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { userLogin } from '../../core/interfaces/UserLogin';
 import { User } from '../../core/models/User';
+import { Roles } from '../../core/models/Roles.enum';
 
 @Component({
   selector: 'app-login',
@@ -41,8 +42,8 @@ export class LoginComponent implements OnInit {
         (data) => {
           sessionStorage.setItem('user', JSON.stringify(data));
           JSON.parse(sessionStorage.getItem('user')) || {};
-          var object = JSON.parse(sessionStorage.getItem('user'))
-          var userObject = object.data.user;
+          // var object = JSON.parse(sessionStorage.getItem('user'))
+          // var userObject = object.data.user;
           // this.user = new User(
           //   userObject.id,
           //   userObject.username,
@@ -52,8 +53,8 @@ export class LoginComponent implements OnInit {
           //   userObject.company,
           //   userObject.roles,
           // )
-          // console.log(this.user)
-          // this.router.navigateByUrl('/main');
+          // console.log(this.user.hasRole(Roles.Customer.toString()));
+          this.router.navigateByUrl('/main');
         },
         (err) => {
           Swal.fire(

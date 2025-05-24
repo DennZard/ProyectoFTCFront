@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { MainPageComponent } from './main-page.component';
+import { AuthGuard } from '../guard/admin-auth.guard';
+import { AuthService } from '../services/auth.service';
+import { Roles } from '../core/models/Roles.enum';
 
 const routes: Routes = [
   {
@@ -13,22 +16,30 @@ const routes: Routes = [
           import('./product/product.module').then((m) => m.ProductModule),
       },
       {
-        path: 'compañia',
+        path: 'compania',
+        canActivate: [AuthGuard],
+        data: { role: Roles.Customer },
         loadChildren: () =>
           import('./company/company.module').then((m) => m.CompanyModule),
       },
       {
         path: 'entrega',
+        canActivate: [AuthGuard],
+        data: { role: Roles.Customer },
         loadChildren: () =>
           import('./delivery/delivery.module').then((m) => m.DeliveryModule),
       },
       {
         path: 'empleado',
+        canActivate: [AuthGuard],
+        data: { role: Roles.Admin },
         loadChildren: () =>
           import('./employee/employee.module').then((m) => m.EmployeeModule),
       },
       {
         path: 'admin',
+        canActivate: [AuthGuard],
+        data: { role: Roles.Admin },
         loadChildren: () =>
           import('./admin/admin.module').then((m) => m.AdminModule),
       },

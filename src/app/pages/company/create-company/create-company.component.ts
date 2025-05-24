@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-create-company',
@@ -14,7 +14,7 @@ export class CreateCompanyComponent implements OnInit {
   ngOnInit(): void {
     const logged = sessionStorage.getItem('user');
     console.log(logged);
-    if (logged != "1") {
+    if (!logged) {
       this.router.navigateByUrl("main/login")
     }
   }
