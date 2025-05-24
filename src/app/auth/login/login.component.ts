@@ -15,6 +15,7 @@ import { User } from '../../core/models/User';
 export class LoginComponent implements OnInit {
   logInUser: FormGroup;
   userId: any;
+  user: User;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -38,9 +39,21 @@ export class LoginComponent implements OnInit {
     if (this.validateCredentials(this.logInUser.value)) {
       this.userService.login(this.logInUser.value).subscribe(
         (data) => {
-          this.userId = data
-          sessionStorage.setItem("user", JSON.stringify(this.userId))
-          this.router.navigateByUrl('/main');
+          sessionStorage.setItem('user', JSON.stringify(data));
+          JSON.parse(sessionStorage.getItem('user')) || {};
+          var object = JSON.parse(sessionStorage.getItem('user'))
+          var userObject = object.data.user;
+          // this.user = new User(
+          //   userObject.id,
+          //   userObject.username,
+          //   "",
+          //   userObject.email,
+          //   userObject.phone,
+          //   userObject.company,
+          //   userObject.roles,
+          // )
+          // console.log(this.user)
+          // this.router.navigateByUrl('/main');
         },
         (err) => {
           Swal.fire(
@@ -54,8 +67,6 @@ export class LoginComponent implements OnInit {
   }
 
   validateCredentials({ email, password }: userLogin) {
-    console.log(this.logInUser.get('password').value);
-    console.log(this.logInUser.get('email').value);
     if (!email || !password) {
       Swal.fire(
         'Credenciales invalidas',

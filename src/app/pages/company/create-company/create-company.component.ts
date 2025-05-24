@@ -12,7 +12,7 @@ export class CreateCompanyComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    const logged = sessionStorage.getItem('isLoggedUser');
+    const logged = sessionStorage.getItem('user');
     console.log(logged);
     if (logged != "1") {
       this.router.navigateByUrl("main/login")

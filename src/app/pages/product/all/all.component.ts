@@ -26,12 +26,16 @@ export class AllComponent implements OnInit {
   }
 
   getImage(product: Product) {
-    if (!product.image.includes('.jpg') && !product.image.includes('.png')) {
-      return `assets/placeholder.png`;
+    if (!product.image) {
+      return`assets/placeholder.png`;
+    } else {
+      if (!product.image.includes('.jpg') && !product.image.includes('.png')) {
+        return `assets/placeholder.png`;
+      }
+      if (product.image.includes('http')) {
+        return product.image;
+      }
     }
-    if (product.image.includes('http')) {
-      return product.image;
-    }
-    return `assets/${product.image}`;
+    return `assets/placeholder.png`;
   }
 }

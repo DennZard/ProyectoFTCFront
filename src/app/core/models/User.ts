@@ -1,16 +1,15 @@
-export class User {
-  id:number
-  username:String
-  password:String
-  email:String
-  phone:String
+import { Company } from "./Company"
+import { Roles } from "./Roles"
 
-  constructor() {
-    this.id = 0
-    this.username = ""
-    this.email = ""
-    this.phone = ""
-    this.password = ""
-  }
+export class User {
+
+  constructor(public id:number,
+    public username: String,
+    public password:String,
+    public email:String,
+    public phone: String,
+    public company: Company,
+    public roles: Roles[]
+  ) { }
 
 }

@@ -45,7 +45,6 @@ export class UserService {
       .pipe(
         tap((data: Response) => {
           if (data.Error) throw data.Error;
-          sessionStorage.setItem('isLoggedUser', "1");
           return data;
         })
       );
