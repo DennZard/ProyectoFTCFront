@@ -19,6 +19,7 @@ import { TableModule } from 'primeng/table';
     CommonModule,
     AdminRoutingModule,
     TableModule,
-    ButtonModule],
+    ButtonModule
+  ],
 })
 export class AdminModule {}

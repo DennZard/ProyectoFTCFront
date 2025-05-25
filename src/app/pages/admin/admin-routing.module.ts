@@ -5,7 +5,7 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 
 const routes: Routes = [
-  {path: 'compania', canActivate:[], component: DeleteCompanyComponent, data: { title: 'Eliminar Compañia'}},
+  {path: 'compania', component: DeleteCompanyComponent, data: { title: 'Eliminar Compañia'}},
   {path: 'empleados', component: DeleteEmployeeComponent, data: { title: 'Detalles'}},
   {path: 'nuevo', component: CreateEmployeeComponent, data: { title: 'Detalles'}},
 ];

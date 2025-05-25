@@ -23,7 +23,7 @@ export class AdminService {
   }
 
   public allCompanies() {
-    return this.http.get<Company>(`${this.baseUrl}company/all`);
+    return this.http.get<Company[]>(`${this.baseUrl}company/all`);
   }
 
   public getProduct(id: number) {
