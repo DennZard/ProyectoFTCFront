@@ -8,7 +8,6 @@ import { CompanyRoutingModule } from './company/company-routing.module';
 import { DeliveryRoutingModule } from './delivery/delivery-routing.module';
 import { EmployeeRoutingModule } from './employee/employee-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,7 +23,6 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
     EmployeeRoutingModule,
     AdminRoutingModule,
     CardModule,
-    BrowserAnimationsModule
   ]
 })
 export class PagesModule { }
