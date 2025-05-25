@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CompanyRoutingModule } from './company-routing.module';
 import { CreateCompanyComponent } from './create-company/create-company.component';
 import { ProductsComponent } from './products/products.component';
@@ -11,6 +10,9 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
+import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { PasswordModule } from 'primeng/password';
     ButtonModule,
     InputTextModule,
     PasswordModule,
+    CardModule,
+    DropdownModule,
   ],
 })
 export class CompanyModule {}

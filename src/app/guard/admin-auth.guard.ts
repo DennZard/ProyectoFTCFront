@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data['role'];
-    console.log(sessionStorage.getItem("user"))
+    // console.log(sessionStorage.getItem("user"))
     if(this.authService.isLogged) {
       console.log("No esta logeado")
       this.router.navigate(['/main/login']);

@@ -1,1 +1,105 @@
-<p>create-product works!</p>
+<div class="animate__animated animate__fadeIn animate__faster">
+  <div class="container">
+    <div class="container__img">
+      <!-- <img [src]="displayedImage" alt="IMG" class="libro__img position__img" /> -->
+      <div class="form-group">
+        <form [formGroup]="productForm">
+          <input
+            type="text"
+            class="form-control"
+            id="imagen"
+            pInputText
+            formControlName="image"
+            name="image"
+            />
+            <!-- (input)="updateImage($event)" -->
+        </form>
+      </div>
+    </div>
+    <!-- Form -->
+    <div class="container__form">
+      <form [formGroup]="productForm">
+        <!-- Inputs group -->
+        <div class="input__group">
+          <div class="group__a">
+            <!-- INPUT NAME -->
+            <div>
+              <div class="p_input_group">
+                <span class="p-inputgroupaddon"
+                  ><i class="pi pi-book"></i
+                ></span>
+                <input
+                  type="text"
+                  pInputText
+                  placeholder="Nombre"
+                  formControlName="name"
+                />
+              </div>
+              <div *ngIf="isValidField('nombre')">
+                <p style="color: rgb(255, 0, 0)">Campo requerido</p>
+              </div>
+            </div>
+            <!-- INPUT PRECIO-->
+            <div>
+              <div class="p_input_group">
+                <span class="p-inputgroupaddon"
+                  ><i class="pi pi-euro"></i
+                ></span>
+                <input
+                  type="number"
+                  pInputText
+                  placeholder="Precio"
+                  formControlName="price"
+                />
+              </div>
+              <div *ngIf="isValidField('precio')">
+                <p style="color: red">Campo requerido</p>
+              </div>
+            </div>
+            <!-- INPUT Cantidad-->
+            <div>
+              <div class="p_input_group">
+                <span class="p-inputgroupaddon"
+                  ><i class="pi pi-save"></i
+                ></span>
+                <input
+                  type="number"
+                  pInputText
+                  placeholder="Cantidad"
+                  formControlName="stock"
+                />
+              </div>
+              <div *ngIf="isValidField('cantidad')">
+                <p style="color: red">Campo requerido</p>
+              </div>
+            </div>
+          </div>
+          <div class="group__a">
+            <!-- INPUT AUTOR -->
+            <div>
+              <p-dropdown
+                [options]="categorias"
+                formControlName="category"
+                placeholder="Categoria"
+                optionLabel="name"
+              ></p-dropdown>
+              <div *ngIf="isValidField('autor')">
+                <p style="color: red">Campo requerido</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="btn__form">
+        <button
+          [disabled]="!productForm.valid"
+          pButton
+          (click)="saveProduct()"
+          type="button"
+          class="p-button-success"
+          label="Guardar producto"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>

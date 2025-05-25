@@ -1,1 +1,31 @@
-<p>products works!</p>
+<div class="animate__animated animate__fadeIn animate__faster">
+  <div class="container">
+    <br />
+    <div class="card__v" *ngFor="let product of products">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div>
+          <img [src]="getImage(product)" class="img position__img"/>
+          </div>
+          <br/>
+          <div>
+            <p>Nombre: {{ product.name}}</p>
+            <p>Precio: {{ product.price | currency : "€" }}</p>
+          </div>
+        </ng-template>
+      </p-card>
+      <ng-template pTemplate="footer">
+        Cantidad: {{ product.stock}}
+      </ng-template>
+    </div>
+  </div>
+  <div class="position_btn_nuevoLibro">
+    <button
+      pButton
+      [routerLink]="['/main/compania/nuevo-producto']"
+      label="Nuevo Producto"
+      icon="pi pi-plus"
+      class="p-button-succes"
+    ></button>
+  </div>
+</div>
