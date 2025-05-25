@@ -1,1 +1,28 @@
-<p>create-company works!</p>
+<div class="limiter">
+  <div class="login_box">
+    <div class = "inside_login">
+      <h1 class="title">
+        Crear Compañia
+      </h1>
+      <form [formGroup]="createCompany" class=" validate-form">
+        <div class="email_field validate-input" data-validate="Enter password">
+          <input type="texts" name="companyName" formControlName="companyName" placeholder="Nombre de la compañia" />
+          <span  data-placeholder="&#xf191;"></span>
+        </div>
+      </form>
+      <form [formGroup]="createCompany" class="buttons_box validate-form">
+        <div class="passwd_field validate-input" data-validate="Enter password">
+          <input type="password" name="password" formControlName="password" placeholder="Su contraseña" />
+          <span data-placeholder="&#xf191;"></span>
+        </div>
+      </form>
+      <div class style="display: flex; justify-content: space-between;">
+        <div>
+          <button class="login_button" (click)="saveCompany($event)">
+            Aceptar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

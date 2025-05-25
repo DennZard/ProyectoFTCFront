@@ -3,7 +3,7 @@ import { User } from './../core/models/User';
 import { HttpClient } from '@angular/common/http';
 import { Response } from '../core/models/Response';
 import { tap } from 'rxjs';
-import { userLogin } from '../core/interfaces/UserLogin';
+import { UserLogin } from '../core/interfaces/UserLogin';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +39,7 @@ export class UserService {
       );
   }
 
-  public login(user: userLogin) {
+  public login(user: UserLogin) {
     return this.http
       .post<any>(`${this.baseUrl}user/login`, { ...user }, this.header)
       .pipe(

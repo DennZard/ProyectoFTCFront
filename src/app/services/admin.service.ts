@@ -26,6 +26,14 @@ export class AdminService {
     return this.http.get<Company>(`${this.baseUrl}/company/all`)
   }
 
+  public getProduct(id:number) {
+    // return this.http.get<Product>(`${this.baseUrl}`)
+  }
+
+  public getProducts() {
+    return this.http.get<Product>(`${this.baseUrl}/product/full`);
+  }
+
   public deleteProduct(id:number) {
     return this.http.delete(`${this.baseUrl}/product/byId?id=` + id)
   }
