@@ -7,6 +7,7 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { TableModule } from 'primeng/table';
     CommonModule,
     AdminRoutingModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
 })
 export class AdminModule {}

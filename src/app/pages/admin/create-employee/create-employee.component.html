@@ -1,1 +1,36 @@
-<p>create-employee works!</p>
+<form [formGroup]="employeeForm">
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email" />
+    <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
+      <small *ngIf="employeeForm.get('email')?.errors?.['required']">El email es obligatorio.</small>
+      <small *ngIf="employeeForm.get('email')?.errors?.['email']">Formato de email inválido.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="name">Nombre:</label>
+    <input id="name" type="text" formControlName="name" />
+    <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched">
+      <small>El nombre es obligatorio.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Apellido:</label>
+    <input id="lastName" type="text" formControlName="lastName" />
+    <div *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched">
+      <small>El apellido es obligatorio.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="phone">Teléfono:</label>
+    <input id="phone" type="text" formControlName="phone" />
+    <div *ngIf="employeeForm.get('phone')?.invalid && employeeForm.get('phone')?.touched">
+      <small>El teléfono es obligatorio.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="employeeForm.invalid" (click)="createEmployee($event)">Enviar</button>
+</form>

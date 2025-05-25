@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../core/models/Product';
 import { Company } from '../core/models/Company';
+import { CreateEmployee } from '../core/interfaces/CreateEmployee';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,11 @@ export class AdminService {
 
   public deleteProduct(id: number) {
     return this.http.delete(`${this.baseUrl}product/byId?id=` + id);
+  }
+
+  public createEmployee(employee: CreateEmployee) {
+    return this.http.post<Boolean>(`${this.baseUrl}employees/create`, {...employee}, this.header)
+
   }
 
   public deleteEmployee(id: number) {
