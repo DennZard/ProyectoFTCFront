@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LibreriaDennis": {
+    "ProyectoFTCFront": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/libreria-dennis",
+            "outputPath": "dist/proyecto-ftcfront",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -35,17 +35,10 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/lara-light-indigo/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "src/styles.css"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "server": "src/main.server.ts"
           },
           "configurations": {
             "production": {
@@ -75,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "LibreriaDennis:build:production"
+              "buildTarget": "ProyectoFTCFront:build:production"
             },
             "development": {
-              "buildTarget": "LibreriaDennis:build:development"
+              "buildTarget": "ProyectoFTCFront:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -98,10 +91,7 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/themes/lara-light-indigo/theme.css",
-              "node_modules/primeng/primeng.min.css"
+              "src/styles.css"
             ],
             "scripts": []
           }

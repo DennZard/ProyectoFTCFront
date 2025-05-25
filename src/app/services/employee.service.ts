@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmployeeLogin } from '../core/interfaces/EmployeeLogin';
+import { Employee } from '../core/models/Employee';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +17,11 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  public changeDeliveryStatus(id: number, ) {
+  public changeDeliveryStatus(id: number) {}
 
+  getEmployees() {
+    return this.http.get<Employee[]>(`${this.baseUrl}employees/all`)
   }
 
-  public loginEmployee(employee: EmployeeLogin) {
-
-  }
-
+  public loginEmployee(employee: EmployeeLogin) {}
 }

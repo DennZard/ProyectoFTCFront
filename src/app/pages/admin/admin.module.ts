@@ -5,17 +5,20 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DeleteCompanyComponent } from './delete-company/delete-company.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
   declarations: [
     DeleteCompanyComponent,
     DeleteEmployeeComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
-  ]
+    AdminRoutingModule,
+    TableModule,
+    ButtonModule],
 })
-export class AdminModule { }
+export class AdminModule {}
