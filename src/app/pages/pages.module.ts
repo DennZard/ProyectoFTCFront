@@ -8,11 +8,13 @@ import { CompanyRoutingModule } from './company/company-routing.module';
 import { DeliveryRoutingModule } from './delivery/delivery-routing.module';
 import { EmployeeRoutingModule } from './employee/employee-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
+import { NoPermsComponent } from './no-perms/no-perms.component';
 
 
 @NgModule({
   declarations: [
-    MainPageComponent
+    MainPageComponent,
+    NoPermsComponent
   ],
   imports: [
     CommonModule,

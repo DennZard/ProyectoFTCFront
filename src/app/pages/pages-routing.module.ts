@@ -4,6 +4,7 @@ import { MainPageComponent } from './main-page.component';
 import { AuthGuard } from '../guard/admin-auth.guard';
 import { AuthService } from '../services/auth.service';
 import { Roles } from '../core/models/Roles.enum';
+import { NoPermsComponent } from './no-perms/no-perms.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/admin.module').then((m) => m.AdminModule),
       },
+      {
+        path:"no-authorized",
+        component: NoPermsComponent
+      }
     ],
   },
 ];
