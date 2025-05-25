@@ -19,11 +19,11 @@ export class AdminService {
   constructor(private http: HttpClient) {}
 
   public deleteCompany(id: number) {
-    return this.http.delete(`${this.baseUrl}/company/byId` + id);
+    return this.http.delete(`${this.baseUrl}company/byId?id=` + id);
   }
 
   public allCompanies() {
-    return this.http.get<Company>(`${this.baseUrl}/company/all`);
+    return this.http.get<Company>(`${this.baseUrl}company/all`);
   }
 
   public getProduct(id: number) {
@@ -31,14 +31,16 @@ export class AdminService {
   }
 
   public getProducts() {
-    return this.http.get<Product>(`${this.baseUrl}/product/full`);
+    return this.http.get<Product>(`${this.baseUrl}product/full`);
   }
 
   public deleteProduct(id: number) {
-    return this.http.delete(`${this.baseUrl}/product/byId?id=` + id);
+    return this.http.delete(`${this.baseUrl}product/byId?id=` + id);
   }
 
-  public deleteEmployee(id: number) {}
+  public deleteEmployee(id: number) {
+    return this.http.delete(`${this.baseUrl}employees/byId?id=` + id)
+  }
 
   public updateProduct(product: Product) {}
 }
