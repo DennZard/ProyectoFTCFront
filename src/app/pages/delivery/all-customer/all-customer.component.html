@@ -20,11 +20,13 @@
       <td class="border px-4 py-2">{{ delivery.product.price | currency:'EUR' }}</td>
       <td class="border px-4 py-2">
         <button
+
           class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded mr-2"
           (click)="verDetalle(delivery.id)"
         >Ver
         </button>
         <button
+          [disabled]="!delivery.status.cancelable"
           class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded"
           (click)="cancelDelivery(delivery.id)"
         >

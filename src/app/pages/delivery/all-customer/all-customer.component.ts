@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DeliveryService } from '../../../services/delivery.service';
 import { User } from '../../../core/models/User';
 import Swal from 'sweetalert2';
+import { StatusService } from '../../../services/status.service';
 
 @Component({
   selector: 'app-all-customer',
@@ -19,7 +20,8 @@ export class AllCustomerComponent implements OnInit{
 
   constructor(
     private router: Router,
-    private deliveryService: DeliveryService
+    private deliveryService: DeliveryService,
+    private statusService: StatusService
 
   ) {
 
