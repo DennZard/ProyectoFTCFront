@@ -46,10 +46,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/admin.module').then((m) => m.AdminModule),
       },
-      {
-        path: 'no-authorized',
-        component: NoPermsComponent,
-      },
     ],
   },
   {
@@ -64,7 +60,13 @@ const routes: Routes = [
       {
         path: 'main/register',
         loadComponent: () =>
-          import('../auth/register/register.component').then((m) => m.RegisterComponent),
+          import('../auth/register/register.component').then(
+            (m) => m.RegisterComponent
+          ),
+      },
+      {
+        path: 'no-authorized',
+        component: NoPermsComponent,
       },
     ],
   },

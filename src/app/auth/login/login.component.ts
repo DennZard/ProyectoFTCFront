@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.logInUser.value).subscribe(
         (data) => {
           sessionStorage.setItem('user', JSON.stringify(data));
-          JSON.parse(sessionStorage.getItem('user')) || {};
           this.router.navigateByUrl('/main');
         },
         (err) => {

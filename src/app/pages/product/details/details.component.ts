@@ -1,6 +1,5 @@
 import { Product } from './../../../core/models/Product';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 
@@ -33,7 +32,7 @@ export class DetailsComponent implements OnInit {
   }
 
   buyProduct(money: number) {
-    money = 100
+    money = 300
     this.productService.buyProduct(this.id, money).subscribe((compra:boolean) => {
       console.log(compra)
     })

@@ -17,11 +17,15 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  public changeDeliveryStatus(id: number) {}
-
   getEmployees() {
-    return this.http.get<Employee[]>(`${this.baseUrl}employees/all`)
+    return this.http.get<Employee[]>(`${this.baseUrl}employees/all`);
   }
 
-  public loginEmployee(employee: EmployeeLogin) {}
+  public loginEmployee(employee: EmployeeLogin) {
+    return this.http.post<Employee>(
+      `${this.baseUrl}employees/login`,
+      { ...employee },
+      this.header
+    );
+  }
 }
