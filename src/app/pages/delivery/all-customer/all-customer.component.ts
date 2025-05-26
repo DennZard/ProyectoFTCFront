@@ -3,6 +3,7 @@ import { Delivery } from '../../../core/models/Delivery';
 import { Router } from '@angular/router';
 import { DeliveryService } from '../../../services/delivery.service';
 import { User } from '../../../core/models/User';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-customer',
@@ -11,6 +12,9 @@ import { User } from '../../../core/models/User';
   styleUrl: './all-customer.component.css'
 })
 export class AllCustomerComponent implements OnInit{
+  verDetalle(id: number) {
+
+  }
   deliveries: Delivery[] = []
 
   constructor(
@@ -28,7 +32,21 @@ export class AllCustomerComponent implements OnInit{
   }
 
   cancelDelivery(id:number) {
-
+    this.deliveryService.changeStatusDelivery(id, 4).subscribe((resp: Boolean) => {
+      if (resp) {
+        Swal.fire(
+          "Entrega canceladda",
+          "Entrega cancelada con exito",
+          "success"
+        )
+      } else {
+        Swal.fire(
+          "No se pudo cancelar la entrega",
+          "Entrega no cancelada",
+          "error"
+        )
+      }
+    })
   }
 
   ngOnInit(): void {

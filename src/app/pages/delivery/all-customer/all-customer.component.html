@@ -7,6 +7,7 @@
       <th class="px-4 py-2">Producto</th>
       <th class="px-4 py-2">Categoría</th>
       <th class="px-4 py-2">Precio</th>
+      <th class="px-4 py-2">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,19 @@
       <td class="border px-4 py-2">{{ delivery.product.name }}</td>
       <td class="border px-4 py-2">{{ delivery.product.category.name }}</td>
       <td class="border px-4 py-2">{{ delivery.product.price | currency:'EUR' }}</td>
+      <td class="border px-4 py-2">
+        <button
+          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded mr-2"
+          (click)="verDetalle(delivery.id)"
+        >Ver
+        </button>
+        <button
+          class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded"
+          (click)="cancelDelivery(delivery.id)"
+        >
+          Eliminar
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

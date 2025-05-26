@@ -5,7 +5,7 @@ import { DeliveryChangeComponent } from './delivery-change/delivery-change.compo
 
 const routes: Routes = [
   {path: 'login', component: LoginEmployeeComponent, data: { title: 'Login'}},
-  {path: ':delivery-change :id', component:DeliveryChangeComponent, data: { title: 'Delivery'}},
+  {path: 'cambioEntregas', component:DeliveryChangeComponent, data: { title: 'Delivery'}},
 ];
 
 @NgModule({

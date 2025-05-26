@@ -14,12 +14,25 @@ export class DeliveryService {
     body: {},
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+  ) {}
 
   getDeliveriesByCustomerId(id:number) {
     return this.http.get<Delivery[]>(
       `${this.baseUrl}deliveries/customer?id=` + id,
       this.header
     );
+  }
+
+  getDeliveriesByEmployeeId(id:number) {
+    return this.http.get<Delivery[]>(
+      `${this.baseUrl}deliveries/employee?id=` + id,
+      this.header
+    )
+  }
+
+  changeStatusDelivery(id:number, StatusId: number) {
+    return this.http.put<Boolean>(`${this.baseUrl}deliveries/update`, {id, StatusId}, this.header );
   }
 }

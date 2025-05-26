@@ -1,1 +1,32 @@
-<p>details works!</p>
+<div class="p-6 bg-white rounded shadow-md">
+  <!-- TODO -->
+  <h2 class="text-2xl font-semibold mb-4">Detalles del Envío</h2>
+
+  <p><strong>Fecha del Envío:</strong> {{ delivery.added }}</p>
+  <p><strong>Destino:</strong> {{ delivery.destination }}</p>
+
+  <h3 class="text-xl font-semibold mt-4">Cliente</h3>
+  <p><strong>Nombre de usuario:</strong> {{ delivery.customer.username }}</p>
+  <p><strong>Email:</strong> {{ delivery.customer.email }}</p>
+
+  <h3 class="text-xl font-semibold mt-4">Estado</h3>
+  <p><strong>Nombre del Estado:</strong> {{ delivery.status.name }}</p>
+
+  <h3 class="text-xl font-semibold mt-4">Empleado asignado</h3>
+  <p><strong>Nombre:</strong> {{ delivery.employee.name }} {{ delivery.employee.lastName }}</p>
+  <p><strong>Email:</strong> {{ delivery.employee.email }}</p>
+  <p><strong>Teléfono:</strong> {{ delivery.employee.phone }}</p>
+  <p><strong>Activo:</strong> {{ delivery.employee.active ? 'Sí' : 'No' }}</p>
+
+  <h3 class="text-xl font-semibold mt-4">Producto</h3>
+  <p><strong>Nombre:</strong> {{ delivery.product.name }}</p>
+  <p><strong>Categoría:</strong> {{ delivery.product.category.name }}</p>
+  <p><strong>Precio:</strong> {{ delivery.product.price | currency:'EUR' }}</p>
+  <p><strong>Fecha de Alta:</strong> {{ delivery.product.added }}</p>
+  <p><strong>Ventas:</strong> {{ delivery.product.sells }}</p>
+
+  <h3 class="text-xl font-semibold mt-4">Compañía del Producto</h3>
+  <p><strong>Nombre:</strong> {{ delivery.product.company.name }}</p>
+  <p><strong>Dueño:</strong> {{ delivery.product.company.owner.username }}</p>
+  <p><strong>Email del Dueño:</strong> {{ delivery.product.company.owner.email }}</p>
+</div>
