@@ -1,0 +1,25 @@
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: -400px;
+  width: 300px;
+  height: 100%;
+  background-color: #f3f3f3;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar-container.open {
+  left: 0;
+  /* o left: 0 si lo abres desde la izquierda */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  float: right;
+  cursor: pointer;
+}

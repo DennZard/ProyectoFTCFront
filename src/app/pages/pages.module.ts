@@ -9,12 +9,15 @@ import { DeliveryRoutingModule } from './delivery/delivery-routing.module';
 import { EmployeeRoutingModule } from './employee/employee-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { NoPermsComponent } from './no-perms/no-perms.component';
+import { SharedModule } from '../shared/shared.module';
+import { MainModule } from '../layouts/main/main.module';
+import { AuthLayoutModule } from '../layouts/auth/auth-layout.module';
 
 
 @NgModule({
   declarations: [
     MainPageComponent,
-    NoPermsComponent
+    NoPermsComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,11 @@ import { NoPermsComponent } from './no-perms/no-perms.component';
     EmployeeRoutingModule,
     AdminRoutingModule,
     CardModule,
-  ]
+    SharedModule,
+    MainModule,
+    AuthLayoutModule
+  ],
 })
-export class PagesModule { }
+export class PagesModule {
+
+ }

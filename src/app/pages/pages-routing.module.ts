@@ -1,15 +1,17 @@
+import { RegisterComponent } from './../auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { MainPageComponent } from './main-page.component';
 import { AuthGuard } from '../guard/admin-auth.guard';
-import { AuthService } from '../services/auth.service';
 import { Roles } from '../core/models/Roles.enum';
 import { NoPermsComponent } from './no-perms/no-perms.component';
+import { MainPageComponent } from './main-page.component';
+import { MainComponent } from '../layouts/main/main.component';
+import { AuthLayoutComponent } from '../layouts/auth/auth-layout.component';
 
 const routes: Routes = [
   {
     path: 'main',
-    component: MainPageComponent,
+    component: MainComponent,
     children: [
       {
         path: 'producto',
@@ -33,7 +35,7 @@ const routes: Routes = [
       {
         path: 'empleado',
         canActivate: [],
-        data: { },
+        data: {},
         loadChildren: () =>
           import('./employee/employee.module').then((m) => m.EmployeeModule),
       },
@@ -45,9 +47,25 @@ const routes: Routes = [
           import('./admin/admin.module').then((m) => m.AdminModule),
       },
       {
-        path:"no-authorized",
-        component: NoPermsComponent
-      }
+        path: 'no-authorized',
+        component: NoPermsComponent,
+      },
+    ],
+  },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'main/login',
+        loadComponent: () =>
+          import('../auth/login/login.component').then((m) => m.LoginComponent),
+      },
+      {
+        path: 'main/register',
+        loadComponent: () =>
+          import('../auth/register/register.component').then((m) => m.RegisterComponent),
+      },
     ],
   },
 ];
