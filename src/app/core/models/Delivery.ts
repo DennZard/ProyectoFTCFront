@@ -11,15 +11,4 @@ export class Delivery {
   product: Product
   destination: String
   status: Status
-
-  constructor() {
-    this.id = 0
-    this.customer = new User
-    this.employee = new Employee
-    this.added = new Date
-    this.product = new Product
-    this.destination = ""
-    this.status = new Status
-  }
-
 }

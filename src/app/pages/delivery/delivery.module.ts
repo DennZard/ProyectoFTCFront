@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DeliveryRoutingModule } from './delivery-routing.module';
 import { AllCustomerComponent } from './all-customer/all-customer.component';
 import { DetailsComponent } from './details/details.component';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { DetailsComponent } from './details/details.component';
   ],
   imports: [
     CommonModule,
-    DeliveryRoutingModule
+    DeliveryRoutingModule,
+    TableModule,
+    ButtonModule
   ]
 })
 export class DeliveryModule { }

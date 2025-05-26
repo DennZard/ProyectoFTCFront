@@ -1,1 +1,22 @@
-<p>all-customer works!</p>
+<table class="table-auto w-full border">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="px-4 py-2">Fecha</th>
+      <th class="px-4 py-2">Estado</th>
+      <th class="px-4 py-2">Destino</th>
+      <th class="px-4 py-2">Producto</th>
+      <th class="px-4 py-2">Categoría</th>
+      <th class="px-4 py-2">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let delivery of deliveries">
+      <td class="border px-4 py-2">{{ delivery.added }}</td>
+      <td class="border px-4 py-2">{{ delivery.status.name }}</td>
+      <td class="border px-4 py-2">{{ delivery.destination }}</td>
+      <td class="border px-4 py-2">{{ delivery.product.name }}</td>
+      <td class="border px-4 py-2">{{ delivery.product.category.name }}</td>
+      <td class="border px-4 py-2">{{ delivery.product.price | currency:'EUR' }}</td>
+    </tr>
+  </tbody>
+</table>
