@@ -1,33 +1,31 @@
 <div class="limiter">
-  <div class="login_box">
-    <div class = "inside_login">
-      <h1 class="title">
-        Login
-      </h1>
-      <form [formGroup]="logInUser" class=" validate-form">
-        <div class="email_field validate-input" data-validate="Enter password">
-          <input type="texts" name="email" formControlName="email" placeholder="email" />
-          <span  data-placeholder="&#xf191;"></span>
+  <div class="login-box">
+    <div class="inside-login">
+      <h1 class="title">Login</h1>
+
+      <form [formGroup]="logInUser" class="validate-form">
+
+        <!-- Email -->
+        <div class="form-field validate-input" data-validate="Enter email">
+          <input type="email" name="email" formControlName="email" placeholder="Email" />
+          <span data-placeholder="&#xf0e0;"></span>
         </div>
-      </form>
-      <form [formGroup]="logInUser" class="buttons_box validate-form">
-        <div class="passwd_field validate-input" data-validate="Enter password">
+
+        <!-- Password -->
+        <div class="form-field validate-input" data-validate="Enter password">
           <input type="password" name="password" formControlName="password" placeholder="Password" />
-          <span data-placeholder="&#xf191;"></span>
+          <span data-placeholder="&#xf023;"></span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+          <button class="btn login-button" type="button" (click)="logInUserBtn($event)">Logearse</button>
+          <button class="btn register-button" type="button" (click)="registerUserBtn($event)">Registrarse</button>
         </div>
       </form>
-      <div class style="display: flex; justify-content: space-between;">
-        <div>
-          <button class="login_button" (click)="logInUserBtn($event)">
-            Logearse
-          </button>
-        </div>
-        <div>
-          <button class="register_button" (click)="registerUserBtn($event)">
-            Registrarse
-          </button>
-        </div>
-      </div>
     </div>
   </div>
+  <a routerLink="/main" class="back-button">
+    ← Volver a inicio
+  </a>
 </div>

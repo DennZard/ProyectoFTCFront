@@ -42,17 +42,17 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  passWordEqual(pass1: String, pass2: String) {
+  passWordEqual(password: string, password2: string) {
     return (formGroup: FormGroup) => {
-      const password = formGroup.get('password');
-      const password2 = formGroup.get('password2');
+      const pass = formGroup.get("password");
+      const pass2 = formGroup.get("password2");
 
-      if (password.value == password2.value) {
-        password.setErrors(null);
-        password2.setErrors(null);
+      if (!password || !password2) return;
+
+      if (pass.value === pass2) {
+        pass2.setErrors(null);
       } else {
-        password.setErrors({ noEsIgual: true });
-        password2.setErrors({ noEsIgual: true });
+        pass2.setErrors({ noEsIgual: true });
       }
     };
   }
@@ -64,16 +64,17 @@ export class RegisterComponent implements OnInit {
         email: ['pinocho@gmail.com', [Validators.required, Validators.email]],
         password: ['123', [Validators.required]],
         password2: ['123', [Validators.required]],
-        phone: ["123456789", [Validators.required]]
+        phone: ['123456789', [Validators.required]],
       },
       {
         validators: this.passWordEqual('password', 'password2'),
       }
-    )
+    );
   }
 
-  isInvalid(item: string) {
-    return this.userRegisterForm.get(item).valid;
+  isInvalid(controlName: string): boolean {
+    const control = this.userRegisterForm.get(controlName);
+    return control?.invalid && (control.dirty || control.touched);
   }
 
   logInUserBtn() {

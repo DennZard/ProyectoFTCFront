@@ -1,87 +1,85 @@
 <div class="limiter">
-  <div class="wrap-login100" style="text-align: center">
-    <h1>Registro</h1>
-    <div>
-      <div [formGroup]="userRegisterForm">
-        <span class="p-float-label">
-          <input
-            id="float-input"
-            type="text"
-            pInputText
-            placeholder="Nombre de Usuario"
-            formControlName="username"
-          />
-          <label for="float-input"></label>
-        </span>
-        <span class="p-float-label">
-          <span class="p-float-label">
-            <input
-              type="text"
-              pInputText
-              placeholder="Email"
-              formControlName="email"
-            />
-            <label for="float-input"></label>
-          </span>
-        <span class="p-float-label">
-          <span class="p-float-label">
-            <input
-              type="text"
-              pInputText
-              placeholder="Numero de Telefono"
-              formControlName="phone"
-            />
-            <label for="float-input"></label>
-          </span>
-          <span class="p-input-icon-left span_format">
-            <input
-              [ngClass]="{ borderRed: isInvalid('password') }"
-              type="password"
-              pInputText
-              class="ng-invalid ng-dirty"
-              placeholder="Contraseña"
-              formControlName="password"
-            />
-            <small
-              [ngClass]="{ none: isInvalid('password') }"
-              id="username2-help"
-              class="p-error"
-            >
-              Las contraseñas no coinciden
-            </small>
-          </span>
-          <span class="p-input-icon-left span_format">
-            <input
-              type="password"
-              pInputText
-              [ngClass]="{ borderRed: isInvalid('password2') }"
-              placeholder="Repite Contraseña"
-              formControlName="password2"
-            />
-          </span>
-          <small
-            [ngClass]="{ none: isInvalid('password2') }"
-            id="username2-help"
-            class="p-error"
-          >
-            Las contraseñas no coinciden
-          </small>
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn" (click)="registerUser()">
-              Register
-            </button>
-          </div>
-          <br />
-          <p>¿Ya tienes una cuenta? Logeate</p>
-          <br />
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn" (click)="logInUserBtn()">
-              Login
-            </button>
-          </div>
-          </span>
-        </span>
+  <div class="register-box">
+    <h1 class="title">Registro</h1>
+
+    <form [formGroup]="userRegisterForm">
+      <!-- Nombre de Usuario -->
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Nombre de Usuario"
+          formControlName="username"
+        />
       </div>
-    </div>
+
+      <!-- Email -->
+      <div class="form-field">
+        <input type="email" placeholder="Email" formControlName="email" />
+      </div>
+
+      <!-- Número de Teléfono -->
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Número de Teléfono"
+          formControlName="phone"
+        />
+      </div>
+
+      <!-- Contraseña -->
+      <div class="form-field">
+        <input
+          type="password"
+          placeholder="Contraseña"
+          formControlName="password"
+          [ngClass]="{ 'p-invalid': isInvalid('password') }"
+        />
+        <small *ngIf="isInvalid('password')" class="error-msg"
+          >La contraseña es requerida</small
+        >
+      </div>
+
+      <!-- Repetir Contraseña -->
+      <div class="form-field">
+        <input
+          type="password"
+          pInputText
+          formControlName="password2"
+          [ngClass]="{
+            'p-invalid':
+              userRegisterForm.hasError('noEsIgual') &&
+              userRegisterForm.get('password2')?.touched
+          }"
+        />
+        <small
+          *ngIf="
+            userRegisterForm.hasError('noEsIgual') &&
+            userRegisterForm.get('password2')?.touched
+          "
+          class="p-error"
+        >
+          Las contraseñas no coinciden
+        </small>
+      </div>
+      <!-- Botón Registrar -->
+      <div class="button-group">
+        <button
+          type="submit"
+          class="btn register-button"
+          (click)="registerUser()"
+        >
+          Registrar
+        </button>
+      </div>
+
+      <!-- Enlace a login -->
+      <p class="login-link">
+        ¿Ya tienes una cuenta?
+        <a (click)="logInUserBtn()">Logeate</a>
+      </p>
+    </form>
   </div>
+  <a routerLink="/main" class="back-button p-button p-component">
+    ← Volver a inicio
+  </a>
 </div>

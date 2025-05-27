@@ -1,53 +1,127 @@
-.wrap-login100 {
-  width: 90%;
-  padding: 30px;
-  background: -webkit-linear-gradient(top, #454798, #911dc4);
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
 }
 
-h1 {
-  margin: 10px;
+.register-box {
+  width: 100%;
+  max-width: 450px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.inLine {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
-.login_message {
-  margin-top: 10px;
+.form-field {
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.span__format {
-  display: flex;
-  flex-direction: column;
-  height: 67vh;
+.form-field input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.875rem;
+  text-align: left;
+  margin-top: 0.25rem;
+}
+
+.button-group {
+  margin-top: 1rem;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 span input.borderRed {
   border-color: #e24c4c;
 }
 
-.none {
-  display: none;
+.register-button {
+  background-color: #28a745;
 }
 
-.mt-10 {
-  margin-top: 10px;
+.register-button:hover {
+  background-color: #1e7e34;
 }
 
-.mb-10 {
-  margin-bottom: 10px;
+.login-link {
+  margin-top: 1rem;
+  font-size: 0.95rem;
 }
 
-.container-form {
+.login-link a {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.limiter {
+  height: 100vh;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  position: relative;
+  background-color: #f4f6f8;
 }
 
-.container-form span {
-  margin: 5px;
+.register-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Botón de volver */
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
 }
