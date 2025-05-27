@@ -1,5 +1,8 @@
-<div class="unauthorized-container">
-  <h1>🚫 Acceso no autorizado</h1>
-  <p>No tienes permisos para acceder a esta página.</p>
-  <button (click)="goHome()">Volver al inicio</button>
+<div class="access-denied-container p-d-flex p-jc-center p-ai-center p-flex-column">
+  <i class="pi pi-ban access-denied-icon"></i>
+  <h1>Acceso No Autorizado</h1>
+  <p>No tienes permiso para acceder a esta página.</p>
+  <button pButton type="button" label="Volver al Login" icon="pi pi-sign-in" (click)="goHome()" class="p-button-rounded p-button-danger home-button">
+    Volver al inicio
+  </button>
 </div>

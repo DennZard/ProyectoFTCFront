@@ -11,6 +11,6 @@ export class NoPermsComponent {
   constructor(private router: Router) {}
 
   goHome() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/main']);
   }
 }

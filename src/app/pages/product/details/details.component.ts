@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class DetailsComponent implements OnInit {
   id!: number;
   product: Product;
-  sidebarOpen;
+  sidebarOpen = false;
   private subscription: Subscription;
 
   ngOnDestroy() {

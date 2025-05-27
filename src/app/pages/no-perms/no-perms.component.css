@@ -1,0 +1,42 @@
+.access-denied-container {
+  height: 60vh;
+  background-color: #f8d7da;
+  color: #731c25;
+  text-align: center;
+  padding: 20vh;
+}
+
+.access-denied-icon {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  flex: 1;
+  margin-top: 20px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.home-button {
+  background-color: #ff8c4ad2;
+}
+
+.home-button:hover {
+  background-color: #fe6004d4;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
