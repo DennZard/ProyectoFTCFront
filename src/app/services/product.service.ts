@@ -1,3 +1,4 @@
+import { BuyProduct } from './../core/interfaces/BuyProduct';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../core/models/Product';
@@ -16,8 +17,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  public buyProduct(id: number, money:number) {
-    return this.http.put(`${this.baseUrl}buy`, {id, money})
+  public buyProduct(buy: BuyProduct) {
+    return this.http.put(`${this.baseUrl}buy`, {...buy}, this.header)
   }
 
   public getDetails(id: number) {

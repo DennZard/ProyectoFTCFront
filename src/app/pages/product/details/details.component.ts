@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Subscription } from 'rxjs';
+import { BuyProduct } from '../../../core/interfaces/BuyProduct';
+import { User } from '../../../core/models/User';
 
 @Component({
   selector: 'app-details',
@@ -47,11 +49,22 @@ export class DetailsComponent implements OnInit {
 
   buyProduct(money: number) {
     money = 300;
+    var destination = "Mi casa2"
+    var user = User.getUser()
+    const dto: BuyProduct  = {
+      id: this.id,
+      money: money,
+      destination: destination,
+      userId: user.id
+    }
     this.productService
-      .buyProduct(this.id, money)
+      .buyProduct(dto)
       .subscribe((compra: boolean) => {
         console.log(compra);
       });
+      setTimeout(() => {
+        this.cargarProducto()
+      }, 1000);
   }
 
   constructor(
