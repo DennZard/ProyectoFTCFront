@@ -6,7 +6,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
-  declarations: [DesplegableComponent],
+  declarations: [
+    DesplegableComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,

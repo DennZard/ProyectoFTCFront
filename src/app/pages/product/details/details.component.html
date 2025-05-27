@@ -1,2 +1,62 @@
-<p>{{product.company.name}}</p>
-<button pButton class="p-button-warning" icon="pi pi-pencil" style="margin-right: 10px;" (click)="buyProduct(200)">Hola</button>
+<!-- <body [ngClass]="{ 'sidebar-open': sidebarVisible }"> -->
+<div class="product-details-container animate__animated animate__fadeIn">
+  <div class="product-details-card p-shadow-4">
+    <div
+    class="product-image-section"
+    >
+      <img
+        [src]="product.image"
+        class="product-image"
+      />
+    </div>
+
+    <div class="product-info-section">
+      <h2>{{ product.name }}</h2>
+
+      <div class="detail-row">
+        <span class="label">Categoría:</span>
+        <span>{{ product.category?.name }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="label">Precio:</span>
+        <span>{{ product.price | currency : "EUR" }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="label">Fecha de alta:</span>
+        <span>{{ product.added | date : "longDate" }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="label">Compañía:</span>
+        <span>{{ product.company?.name }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="label">Ventas:</span>
+        <span>{{ product.sells }}</span>
+      </div>
+      <button
+        pButton
+        label="Volver"
+        icon="pi pi-arrow-left"
+        class=""
+        routerLink="/main/producto/all"
+      >
+        Comprar
+      </button>
+    </div>
+  </div>
+  <button
+    pButton
+    label="Volver"
+    icon="pi pi-arrow-left"
+    class="back-button"
+    [ngClass]="{ 'moved-button': sidebarOpen}"
+    routerLink="/main/producto/all"
+  >
+    Volver
+  </button>
+</div>
+<!-- </body> -->

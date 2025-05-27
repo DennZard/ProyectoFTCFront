@@ -1,31 +1,32 @@
 <div class="animate__animated animate__fadeIn animate__faster">
-  <div class="container">
-    <br />
-    <div class="card__v" *ngFor="let product of products" (click)="verDetalles(product.id)">
-      <p-card>
+  <div class="product-container">
+    <div
+      class="product-card"
+      *ngFor="let product of products"
+      (click)="verDetalles(product.id)"
+    >
+      <p-card class="p-shadow-4 hoverable">
         <ng-template pTemplate="header">
-          <div>
-          <img [src]="getImage(product)" class="img position__img"/>
-          </div>
-          <br/>
-          <div>
-            <p>Nombre: {{ product.name}}</p>
-            <p>Precio: {{ product.price | currency : "€" }}</p>
-          </div>
+          <img [src]="getImage(product)" class="product-image" />
+        </ng-template>
+
+        <div class="product-details">
+          <h3>{{ product.name }}</h3>
+          <p class="price">{{ product.price | currency : 'EUR' }}</p>
+        </div>
+
+        <ng-template pTemplate="footer">
+          <small>Cantidad disponible: {{ product.stock }}</small>
         </ng-template>
       </p-card>
-      <ng-template pTemplate="footer">
-        Cantidad: {{ product.stock}}
-      </ng-template>
     </div>
   </div>
-  <div class="position_btn_nuevoLibro">
-    <button
-      pButton
-      [routerLink]="['/main/nuevo-libro']"
-      label="Nuevo Libro"
-      icon="pi pi-plus"
-      class="p-button-succes"
-    ></button>
-  </div>
+
+  <button
+    pButton
+    [routerLink]="['/main/nuevo-libro']"
+    label="Nuevo Libro"
+    icon="pi pi-plus"
+    class="add-button p-button-success"
+  ></button>
 </div>
