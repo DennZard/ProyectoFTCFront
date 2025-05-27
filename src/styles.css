@@ -185,3 +185,20 @@ table {
 .swal2-html-container {
   font-family: "Rubik", sans-serif;
 }
+
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  transition: left 0.3s ease;
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.back-button.moved-button {
+  left: 270px;
+}
