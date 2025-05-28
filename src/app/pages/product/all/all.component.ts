@@ -2,6 +2,8 @@ import { ProductService } from './../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../../core/models/Product';
+import { DesplegableService } from '../../../shared/desplegable/desplegable.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-all',
@@ -11,10 +13,24 @@ import { Product } from '../../../core/models/Product';
 })
 export class AllComponent implements OnInit {
   products: Product[] = [];
+  sidebarOpen = false;
+  private subscription: Subscription;
 
-  constructor(private productService: ProductService, private router: Router) {}
+
+  constructor(
+    private productService: ProductService,
+     private router: Router,
+     private desplegableService: DesplegableService
+    ) {}
+
+
 
   ngOnInit(): void {
+    this.subscription = this.desplegableService.isSidebarOpen$.subscribe(
+      (open) => {
+        this.sidebarOpen = open;
+      }
+    );
     this.productService.getAll().subscribe((products: Product[]) => {
       this.products = products;
     });

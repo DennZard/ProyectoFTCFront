@@ -1,5 +1,5 @@
 <div class="animate__animated animate__fadeIn animate__faster">
-  <div class="product-container">
+  <div class="product-container" [ngClass]="{'moved-data' : sidebarOpen}">
     <div
       class="product-card"
       *ngFor="let product of products"
@@ -14,19 +14,7 @@
           <h3>{{ product.name }}</h3>
           <p class="price">{{ product.price | currency : 'EUR' }}</p>
         </div>
-
-        <ng-template pTemplate="footer">
-          <small>Cantidad disponible: {{ product.stock }}</small>
-        </ng-template>
       </p-card>
     </div>
   </div>
-
-  <button
-    pButton
-    [routerLink]="['/main/nuevo-libro']"
-    label="Nuevo Libro"
-    icon="pi pi-plus"
-    class="add-button p-button-success"
-  ></button>
 </div>

@@ -22,11 +22,23 @@ export class DetailsComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+  getImage(product: Product) {
+    if (!product.image) {
+      return`assets/placeholder.png`;
+    } else {
+      if (!product.image.includes('.jpg') && !product.image.includes('.png')) {
+        return `assets/placeholder.png`;
+      }
+      if (product.image.includes('http')) {
+        return product.image;
+      }
+    }
+    return `assets/placeholder.png`;
+  }
 
   ngOnInit(): void {
     this.subscription = this.desplegableService.isSidebarOpen$.subscribe(
       (open) => {
-        console.log('Sidebar state received:', open);
         this.sidebarOpen = open;
       }
     );
@@ -35,6 +47,7 @@ export class DetailsComponent implements OnInit {
       this.id = Number(params.get('id'));
       this.cargarProducto();
     });
+    console.log(this.product)
   }
 
   goToAll() {

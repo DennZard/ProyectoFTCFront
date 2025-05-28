@@ -1,6 +1,24 @@
+<header class="app-header">
+  <div class="logo">Mi Aplicación</div>
+  <div class="user-actions">
+    <ng-container *ngIf="usuario; else loginRegister">
+      <span class="username">👤 {{ usuario.username }}</span>
+    </ng-container>
+    <ng-template #loginRegister>
+      <button class="header-btn" (click)="goToLogin()">Login</button>
+      <button class="header-btn" (click)="goToRegister()">Registro</button>
+    </ng-template>
+  </div>
+</header>
+
 <div class="sidebar-container" [class.open]="isOpen">
   <button class="close-btn" (click)="toggleSidebar()">×</button>
-  <p>Contenido del panel lateral</p>
+  <nav class="sidebar-nav">
+    <a (click)="goToMain(); toggleSidebar()">🏠 Inicio</a>
+    <a (click)="goToProducts(); toggleSidebar()">👤 Productos</a>
+    <!-- <a routerLink="/admin" (click)="toggleSidebar()">⚙️ Configuración</a>
+    <a routerLink="/company" (click)="toggleSidebar()">📞 Contacto</a> -->
+  </nav>
 </div>
 
-<button (click)="toggleSidebar()">☰</button>
+<button class="open-sidebar-btn" (click)="toggleSidebar()">☰</button>
