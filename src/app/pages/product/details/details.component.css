@@ -2,9 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  min-height: 100vh;
-  background-color: #f9fafb;
+  padding: 0rem;
+  min-height: 96.7vh;
+  background-color: #3082d4;
 }
 
 .product-details-card {
@@ -16,6 +16,8 @@
   max-width: 900px;
   width: 100%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: left 0.3s ease;
 }
 
 @media (min-width: 768px) {
@@ -81,10 +83,11 @@
   left: 350px;
 }
 
-.moved-data {
-  left: 3500px
-}
-
 .back-button:hover {
   background-color: #0056b3;
 }
+
+.moved-data {
+  left: 150px
+}
+

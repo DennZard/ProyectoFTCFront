@@ -1,6 +1,5 @@
-<!-- <body [ngClass]="{ 'sidebar-open': sidebarVisible }"> -->
 <div class="product-details-container animate__animated animate__fadeIn">
-  <div class="product-details-card p-shadow-4">
+  <div class="product-details-card p-shadow-4" [ngClass]="{'moved-data': sidebarOpen}">
     <div
     class="product-image-section"
     >
@@ -59,4 +58,3 @@
     Volver
   </button>
 </div>
-<!-- </body> -->

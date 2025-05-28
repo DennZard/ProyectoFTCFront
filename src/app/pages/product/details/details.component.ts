@@ -30,6 +30,7 @@ export class DetailsComponent implements OnInit {
         this.sidebarOpen = open;
       }
     );
+    this.sidebarOpen = false
     this.route.paramMap.subscribe((params) => {
       this.id = Number(params.get('id'));
       this.cargarProducto();

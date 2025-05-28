@@ -1,0 +1,26 @@
+.company-table-wrapper {
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+::ng-deep .p-datatable th {
+  background-color: #f1f5f9;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+::ng-deep .p-datatable tbody td {
+  padding: 0.75rem 1rem;
+  color: #374151;
+}
+
+::ng-deep .p-button-danger {
+  background-color: #ef4444;
+  border: none;
+}
+
+::ng-deep .p-button-danger:hover {
+  background-color: #dc2626;
+}

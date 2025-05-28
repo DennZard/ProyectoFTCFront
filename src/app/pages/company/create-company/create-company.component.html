@@ -6,11 +6,9 @@
       </h1>
       <form [formGroup]="createCompany" class=" validate-form">
         <div class="email_field validate-input" data-validate="Enter password">
-          <input type="texts" name="companyName" formControlName="companyName" placeholder="Nombre de la compañia" />
+          <input type="text" name="companyName" formControlName="companyName" placeholder="Nombre de la compañia" />
           <span  data-placeholder="&#xf191;"></span>
         </div>
-      </form>
-      <form [formGroup]="createCompany" class="buttons_box validate-form">
         <div class="passwd_field validate-input" data-validate="Enter password">
           <input type="password" name="password" formControlName="password" placeholder="Su contraseña" />
           <span data-placeholder="&#xf191;"></span>
@@ -22,7 +20,17 @@
             Aceptar
           </button>
         </div>
+        <p>En caso de que quieras borrar la compañia tienes que notificarselo a un administrador</p>
       </div>
     </div>
   </div>
+  <button
+    pButton
+    label="Volver"
+    icon="pi pi-arrow-left"
+    class="back-button"
+    [ngClass]="{ 'moved-button': sidebarOpen }"
+    routerLink="/main"
+  >
+  </button>
 </div>

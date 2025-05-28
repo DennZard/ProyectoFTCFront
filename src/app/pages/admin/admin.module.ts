@@ -8,6 +8,7 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TableModule,
     ButtonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    TooltipModule
   ],
 })
 export class AdminModule {}
