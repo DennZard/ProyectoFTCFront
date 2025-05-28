@@ -186,6 +186,10 @@ table {
   font-family: "Rubik", sans-serif;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 .back-button {
   position: fixed;
   bottom: 20px;
