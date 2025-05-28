@@ -31,6 +31,7 @@ export class AllComponent implements OnInit {
         this.sidebarOpen = open;
       }
     );
+    this.sidebarOpen = false
     this.productService.getAll().subscribe((products: Product[]) => {
       this.products = products;
     });

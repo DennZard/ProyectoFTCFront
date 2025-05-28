@@ -29,6 +29,10 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}prefix?rpefix=` + prefix);
   }
 
+  public getPopular() {
+    return this.http.get<Product[]>(`${this.baseUrl}popular`, this.header)
+  }
+
   public getAll() {
     return this.http.get<Product[]>(`${this.baseUrl}all`, this.header);
   }

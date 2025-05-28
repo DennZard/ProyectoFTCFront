@@ -1,5 +1,4 @@
 .product-container {
-  position: absolute;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -10,6 +9,7 @@
 
 .moved-data {
   left: 200px;
+  position: absolute;
 
 }
 
