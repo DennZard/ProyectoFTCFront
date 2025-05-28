@@ -12,6 +12,7 @@ import { NoPermsComponent } from './no-perms/no-perms.component';
 import { SharedModule } from '../shared/shared.module';
 import { MainModule } from '../layouts/main/main.module';
 import { AuthLayoutModule } from '../layouts/auth/auth-layout.module';
+import { InicioModule } from './main/inicio.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AuthLayoutModule } from '../layouts/auth/auth-layout.module';
     CardModule,
     SharedModule,
     MainModule,
-    AuthLayoutModule
+    AuthLayoutModule,
+    InicioModule
   ],
 })
 export class PagesModule {

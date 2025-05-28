@@ -10,10 +10,12 @@ import { provideHttpClient } from '@angular/common/http';
 import { CardModule } from 'primeng/card';
 import { AuthLayoutModule } from './layouts/auth/auth-layout.module';
 import { MainModule } from './layouts/main/main.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,

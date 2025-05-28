@@ -32,7 +32,7 @@ export class DesplegableComponent implements OnInit{
   }
 
   goToMain() {
-    this.router.navigateByUrl("/main")
+    this.router.navigateByUrl("/main/inicio")
   }
   goToProducts() {
     this.router.navigateByUrl("/main/producto/all")

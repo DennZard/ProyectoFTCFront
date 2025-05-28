@@ -4,7 +4,6 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthGuard } from '../guard/admin-auth.guard';
 import { Roles } from '../core/models/Roles.enum';
 import { NoPermsComponent } from './no-perms/no-perms.component';
-import { MainPageComponent } from './main-page.component';
 import { MainComponent } from '../layouts/main/main.component';
 import { AuthLayoutComponent } from '../layouts/auth/auth-layout.component';
 
@@ -13,10 +12,6 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
-      {
-        path: '',
-        component: MainPageComponent,
-      },
       {
         path: 'producto',
         loadChildren: () =>
@@ -49,6 +44,11 @@ const routes: Routes = [
         data: { role: Roles.Admin },
         loadChildren: () =>
           import('./admin/admin.module').then((m) => m.AdminModule),
+      },
+      {
+        path: 'inicio',
+        loadChildren: () =>
+          import('./main/inicio.module').then((m) => m.InicioModule),
       },
     ],
   },
