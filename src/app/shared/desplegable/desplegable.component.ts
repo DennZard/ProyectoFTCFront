@@ -10,21 +10,31 @@ import { User } from '../../core/models/User';
   templateUrl: './desplegable.component.html',
   styleUrl: './desplegable.component.css',
 })
-export class DesplegableComponent implements OnInit{
+export class DesplegableComponent implements OnInit {
   isOpen = false;
   usuario: User;
 
+  openSubMenu: string | null = null;
+
+  toggleSubMenu(menu: string): void {
+    this.openSubMenu = this.openSubMenu === menu ? null : menu;
+  }
+
   constructor(
     private desplegableService: DesplegableService,
-    private router:Router,
-    private authService:AuthService
+    private router: Router,
+    private authService: AuthService
   ) {}
   ngOnInit(): void {
-    this.usuario = this.authService.user
+    this.usuario = this.authService.user;
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 
   goToLogin() {
-    this.router.navigateByUrl("/main/login")
+    this.router.navigateByUrl('/main/login');
   }
 
   goToRegister() {
@@ -32,10 +42,10 @@ export class DesplegableComponent implements OnInit{
   }
 
   goToMain() {
-    this.router.navigateByUrl("/main/inicio")
+    this.router.navigateByUrl('/main/inicio');
   }
   goToProducts() {
-    this.router.navigateByUrl("/main/producto/all")
+    this.router.navigateByUrl('/main/producto/all');
   }
   // goToAdmin() {
   //   this.router.navigateByUrl("/admin")

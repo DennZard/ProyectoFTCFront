@@ -1,105 +1,92 @@
-<div class="animate__animated animate__fadeIn animate__faster">
-  <div class="container">
-    <div class="container__img">
-      <!-- <img [src]="displayedImage" alt="IMG" class="libro__img position__img" /> -->
-      <div class="form-group">
+<div class="page-wrapper animate__animated animate__fadeIn animate__faster">
+  <p-card class="producto-card">
+    <div class="producto-container">
+      <!-- Imagen -->
+      <div class="producto-img-section">
         <form [formGroup]="productForm">
+          <img
+          pInputText
+          placeholder="Image"
+          formControlName="image"
+            [src]="
+              displayedImage || 'assets/placeholder.png'
+            "
+            alt="Imagen del producto"
+            class="producto-img"
+          />
           <input
             type="text"
-            class="form-control"
-            id="imagen"
             pInputText
+            placeholder="URL de la imagen"
             formControlName="image"
-            name="image"
-            />
-            <!-- (input)="updateImage($event)" -->
+            (input)="updateImage($event)"
+          />
         </form>
       </div>
-    </div>
-    <!-- Form -->
-    <div class="container__form">
-      <form [formGroup]="productForm">
-        <!-- Inputs group -->
-        <div class="input__group">
-          <div class="group__a">
-            <!-- INPUT NAME -->
-            <div>
-              <div class="p_input_group">
-                <span class="p-inputgroupaddon"
-                  ><i class="pi pi-book"></i
-                ></span>
-                <input
-                  type="text"
-                  pInputText
-                  placeholder="Nombre"
-                  formControlName="name"
-                />
-              </div>
-              <div *ngIf="isValidField('nombre')">
-                <p style="color: rgb(255, 0, 0)">Campo requerido</p>
-              </div>
+
+      <!-- Formulario -->
+      <div class="producto-form-section">
+        <form [formGroup]="productForm">
+          <div class="form-columns">
+            <div class="form-group">
+              <span class="p-inputgroup-addon"
+                ><i class="pi pi-tag"> Nombre</i></span
+              >
+              <input
+                type="text"
+                pInputText
+                placeholder="Nombre"
+                formControlName="name"
+              />
+              <p *ngIf="isValidField('name')">Campo requerido</p>
+
+              <span class="p-inputgroup-addon"
+                ><i class="pi pi-euro"> Precio</i></span
+              >
+              <input
+                type="number"
+                pInputText
+                placeholder="Precio"
+                formControlName="price"
+              />
+              <p *ngIf="isValidField('price')">Campo requerido</p>
+
+              <span class="p-inputgroup-addon"
+                ><i class="pi pi-box"> Stock</i></span
+              >
+              <input
+                type="number"
+                pInputText
+                placeholder="Stock"
+                formControlName="stock"
+              />
+              <p *ngIf="isValidField('stock')">Campo requerido</p>
             </div>
-            <!-- INPUT PRECIO-->
-            <div>
-              <div class="p_input_group">
-                <span class="p-inputgroupaddon"
-                  ><i class="pi pi-euro"></i
-                ></span>
-                <input
-                  type="number"
-                  pInputText
-                  placeholder="Precio"
-                  formControlName="price"
-                />
-              </div>
-              <div *ngIf="isValidField('precio')">
-                <p style="color: red">Campo requerido</p>
-              </div>
-            </div>
-            <!-- INPUT Cantidad-->
-            <div>
-              <div class="p_input_group">
-                <span class="p-inputgroupaddon"
-                  ><i class="pi pi-save"></i
-                ></span>
-                <input
-                  type="number"
-                  pInputText
-                  placeholder="Cantidad"
-                  formControlName="stock"
-                />
-              </div>
-              <div *ngIf="isValidField('cantidad')">
-                <p style="color: red">Campo requerido</p>
-              </div>
-            </div>
-          </div>
-          <div class="group__a">
-            <!-- INPUT AUTOR -->
-            <div>
+
+            <div class="form-group">
               <p-dropdown
                 [options]="categorias"
                 formControlName="category"
-                placeholder="Categoria"
+                placeholder="Categoría"
                 optionLabel="name"
               ></p-dropdown>
-              <div *ngIf="isValidField('autor')">
-                <p style="color: red">Campo requerido</p>
-              </div>
+              <p *ngIf="isValidField('categoryId')">Campo requerido</p>
             </div>
           </div>
+        </form>
+
+        <!-- Botón -->
+        <div class="btn-form">
+          <button
+            [disabled]="!productForm.valid"
+            pButton
+            type="button"
+            label="Guardar producto"
+            class="p-button-success"
+            (click)="saveProduct()"
+          ></button>
         </div>
-      </form>
-      <div class="btn__form">
-        <button
-          [disabled]="!productForm.valid"
-          pButton
-          (click)="saveProduct()"
-          type="button"
-          class="p-button-success"
-          label="Guardar producto"
-        ></button>
       </div>
     </div>
-  </div>
+  </p-card>
 </div>

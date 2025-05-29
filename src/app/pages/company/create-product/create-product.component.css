@@ -1,85 +1,173 @@
-img {
+/* img {
   width: 20%;
   height: 10%;
   margin-top: 2%;
   margin-left: 2%;
-}
-
-.input_group {
-  margin: 30px;
-}
-
-.p_input_group {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: auto;
-}
-
-.container_form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: auto;
-}
-
-.input__group {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-
-.container__form {
-  width: 75%;
-}
-
-.container__img {
-  width: 25%;
-  height: 75vh;
-}
-
-.position__img {
-  margin-top: 40px;
-  margin-left: 40px;
-}
-
-.form-control {
-  margin-top: 10px;
-  margin-left: 40px;
-  width: 80%;
-}
-
-.libro__img {
-  width: 80%;
-  height: 80%;
-  cursor: pointer;
-}
-
-.group__a {
+} */
+.page-wrapper {
   padding: 2rem;
-  width: 83%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-form {
-  width: 100%;
-  height: 80%;
-}
-
-.p_input_group {
-  display: flex;
-  align-items: stretch;
-}
-
-.btn__form {
-  width: 100%;
   display: flex;
   justify-content: center;
+}
+
+/* Card */
+.producto-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Contenido */
+.producto-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* Imagen */
+.producto-img-section {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.producto-img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  background-color: #f4f4f4;
+}
+
+/* Formulario */
+.producto-form-section {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.p-inputgroup-addon {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: #666;
+}
+
+/* INPUT PERSONALIZADO */
+input[pInputText] {
+  width: 100%;
+  border: 2px solid #cfe2ff;
+  border-radius: 6px;
+  padding: 0.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[pInputText]:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  outline: none;
+}
+
+p-dropdown {
+  width: 100%;
+  margin-top: 40px;
+}
+
+p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: red;
+}
+
+/* Botón */
+.btn-form {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Botón desactivado */
+.p-button[disabled] {
+  background-color: #ccc !important;
+  border-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+/* Botón activado */
+.p-button-success:not([disabled]) {
+  background-color: #0d6efd !important;
+  border-color: #0b5ed7 !important;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.p-button-success:not([disabled]):hover {
+  background-color: #0b5ed7 !important;
+  box-shadow: 0 6px 15px rgba(13, 110, 253, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .producto-container {
+    flex-direction: column;
+  }
+
+  .btn-form {
+    justify-content: center;
+  }
+}
+
+/* Estilo general para los dropdowns */
+:host ::ng-deep .p-dropdown {
+  width: 100%;
+  border: 2px solid #cfe2ff;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  height: 42px;
+  background-color: white;
+}
+
+/* Borde cuando está enfocado */
+:host ::ng-deep .p-dropdown.p-focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* El ícono de flecha más grande */
+:host ::ng-deep .p-dropdown .p-dropdown-trigger {
+  width: 2.5rem;
+}
+
+/* Aumentar tamaño de los ítems del dropdown */
+:host ::ng-deep .p-dropdown-items .p-dropdown-item {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
 }

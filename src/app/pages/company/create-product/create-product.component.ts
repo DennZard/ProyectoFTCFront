@@ -18,6 +18,7 @@ import { Category } from '../../../core/models/Category';
 export class CreateProductComponent implements OnInit {
   productForm: FormGroup;
   categorias: Category[] = [];
+  displayedImage: string = 'assets/placeholder.png';
 
   constructor(
     private router: Router,
@@ -34,6 +35,11 @@ export class CreateProductComponent implements OnInit {
     });
   }
 
+  updateImage(event: any): void {
+    console.log(this.productForm.value.category)
+    this.displayedImage = event.target.value || 'assets/placeholder.png';
+  }
+
   saveProduct() {
     const companyId = User.getUser().company.id;
     const dto: CreateProduct = {
@@ -44,7 +50,7 @@ export class CreateProductComponent implements OnInit {
       image: this.productForm.value.image,
       stock: this.productForm.value.stock,
     };
-    console.log(dto)
+    console.log(dto);
     this.companyService.createProduct(dto).subscribe((creado: Boolean) => {
       if (creado) {
         Swal.fire(
@@ -65,6 +71,7 @@ export class CreateProductComponent implements OnInit {
   getCategories() {
     this.categoryService.getCategories().subscribe((categories: Category[]) => {
       this.categorias = categories;
+      console.log(categories)
     });
   }
   isValidField(key: string) {
@@ -72,7 +79,6 @@ export class CreateProductComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getCategories();
-    console.log(this.categorias)
-
+    console.log(this.categorias);
   }
 }

@@ -112,3 +112,28 @@ body {
 .moved-data {
   left: 300px;
 }
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: #111827;
+  font-weight: 500;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: #e5e7eb;
+}
+
+.sub-menu {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 10px;
+  border-left: 2px solid #d1d5db;
+}

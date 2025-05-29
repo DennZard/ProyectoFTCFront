@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.logInUser.value).subscribe(
         (data) => {
           sessionStorage.setItem('user', JSON.stringify(data));
-          this.router.navigateByUrl('/main');
+          this.router.navigateByUrl('/main/inicio');
         },
         (err) => {
           Swal.fire(
