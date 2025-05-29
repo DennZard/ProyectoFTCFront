@@ -2,22 +2,26 @@ import { Injectable } from '@angular/core';
 import { User } from '../core/models/User';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor() {}
 
-  constructor() { }
-
-
-  get isLogged():boolean {
-     if (!sessionStorage.getItem("user")) {
-      return true
+  get isLogged(): boolean {
+    var user = JSON.parse(sessionStorage.getItem("user"))
+    console.log(user)
+    if (user && user?.data?.user?.password) {
+      return true;
     } else {
-      return false
+      console.log(user?.data?.user?.password);
+      return false;
     }
   }
 
-  get user(){
+  get user() {
+    var user = JSON.parse(sessionStorage.getItem('user')).data.user;
+    console.log("password" in user);
+    if (user?.password) {
       const object = JSON.parse(sessionStorage.getItem('user'));
       const userObject = object.data.user;
       return new User(
@@ -29,14 +33,17 @@ export class AuthService {
         userObject.company,
         userObject.roles
       );
+    }
+    return null
   }
 
-  hasRole(role: string):boolean {
-    if (!this.isLogged) {
+  hasRole(role: string): boolean {
+    if (this.isLogged) {
+      console.log(this.user.hasRole)
       return this.user.hasRole(role);
     } else {
-      return false
+      console.log(this.isLogged)
+      return false;
     }
   }
-
 }
