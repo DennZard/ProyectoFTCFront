@@ -1,21 +1,72 @@
-.login-form {
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f4f8;
+  padding: 2rem;
+}
+
+/* Tarjeta */
+.login-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
   max-width: 400px;
-  margin: auto;
+}
+
+/* Título */
+.login-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1a73e8;
+}
+
+/* Formulario */
+.login-form .form-group {
+  margin-bottom: 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+}
+
+.login-form label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #333;
 }
 
 .login-form input {
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 0.6rem 1rem;
+  border: 2px solid #a3c2f5;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s;
 }
 
-.login-form button {
-  padding: 0.6rem;
-  background-color: #007bff;
+.login-form input:focus {
+  border-color: #1a73e8;
+  outline: none;
+}
+
+/* Botón */
+.login-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #1a73e8;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:disabled {
+  background-color: #a3c2f5;
+  cursor: not-allowed;
+}
+
+.login-btn:hover:not(:disabled) {
+  background-color: #155ecb;
 }

@@ -3,6 +3,7 @@ import { EmployeeService } from './../../../services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../../core/models/Employee';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-employee',
@@ -15,14 +16,14 @@ export class LoginEmployeeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private router:Router
   ) {}
 
   loginEmployee($event: MouseEvent) {
-
     this.employeeService.loginEmployee(this.employeeForm.value).subscribe((empl: Employee) => {
       sessionStorage.setItem('user', JSON.stringify(empl));
-      console.log(sessionStorage.getItem('user'));
+      this.router.navigateByUrl("/main/empleado/cambioEntregas")
     });
   }
 
