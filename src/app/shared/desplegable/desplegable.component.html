@@ -33,6 +33,13 @@
         <a *ngIf = "usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/empleados'); toggleSidebar()">👤 Empleados</a>
         <a *ngIf = "usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/compania'); toggleSidebar()">🏢 Companias</a>
       </div>
+      <button *ngIf="!isUser()"class="dropdown-toggle" (click)="toggleSubMenu('employee')">
+        👤 Employee
+      </button>
+      <div *ngIf="openSubMenu === 'employee'" (click)="toggleSubMenu('employee')" class="sub-menu">
+        <a *ngIf="!isEmployee()" (click)="navigateTo('/main/empleado/cambioEntregas'); toggleSidebar()">Gestionar entregas</a>
+        <a *ngIf="isEmployee()" (click)="navigateTo('/main/empleado/login'); toggleSidebar()">Login</a>
+      </div>
     </div>
   </nav>
 </div>

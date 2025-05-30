@@ -1,8 +1,8 @@
 export class Employee {
   constructor(
-    id: number,
+    public id: number,
     email: String,
-    name: String,
+    public name: String,
     lastName: String,
     phone: String,
     active: boolean

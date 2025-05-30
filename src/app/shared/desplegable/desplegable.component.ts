@@ -1,3 +1,4 @@
+import { AuthEmployeeService } from './../../services/authEmployee.service';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -13,8 +14,8 @@ import { User } from '../../core/models/User';
 export class DesplegableComponent implements OnInit {
   isOpen = false;
   usuario: User;
-
   openSubMenu: string | null = null;
+  showEmployee:boolean
 
   toggleSubMenu(menu: string): void {
     this.openSubMenu = this.openSubMenu === menu ? null : menu;
@@ -23,10 +24,16 @@ export class DesplegableComponent implements OnInit {
   constructor(
     private desplegableService: DesplegableService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private authEmployeeService: AuthEmployeeService
   ) {}
   ngOnInit(): void {
-    this.usuario = this.authService.user;
+    console.log(this.authService.user)
+    if (this.isUser()) {
+      this.usuario = this.authService.user;
+    }
+
+
   }
 
   navigateTo(route: string): void {
@@ -47,6 +54,26 @@ export class DesplegableComponent implements OnInit {
   goToProducts() {
     this.router.navigateByUrl('/main/producto/all');
   }
+
+  isEmployee(){
+     if (this.authEmployeeService.employee) {
+      console.log("Soy un empleado")
+      return false
+    }
+    console.log("No soy un empleado")
+     return true
+  }
+
+  isUser() {
+    if(this.authService.user?.roles) {
+      console.log("Soy un usuario")
+      return true
+    }
+
+    console.log("No soy un usuario")
+    return false
+  }
+
   toggleSidebar() {
     this.isOpen = !this.isOpen;
     this.desplegableService.setSidebarState(this.isOpen);
