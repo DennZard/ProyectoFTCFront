@@ -1,6 +1,22 @@
-import type { CanActivateFn } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router } from "@angular/router";
+import { AuthEmployeeService } from "../services/authEmployee.service";
+import { Injectable } from "@angular/core";
 
-export class employeeGuard {
+@Injectable({
+  providedIn: 'root',
+})
+export class employeeGuard implements CanActivate {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    if (!this.authEmployeeService.isLogged && !this.authEmployeeService.employee) {
+      console.log('El usuario no esta logeado');
+      this.router.navigateByUrl('/main/empleado/login');
+      return false;
+    }
+    return true;
+  }
 
-
+  constructor(
+    private authEmployeeService: AuthEmployeeService,
+    private router: Router
+  ) {}
 };

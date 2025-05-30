@@ -2,7 +2,6 @@
   <div class="login-card">
     <h2 class="login-title">Iniciar sesión</h2>
     <form [formGroup]="employeeForm" (ngSubmit)="loginEmployee($event)" class="login-form">
-      <!-- Email -->
       <div class="form-group">
         <label for="email">Correo electrónico</label>
         <input
@@ -13,7 +12,6 @@
         />
       </div>
 
-      <!-- Teléfono -->
       <div class="form-group">
         <label for="phone">Teléfono</label>
         <input
@@ -24,7 +22,6 @@
         />
       </div>
 
-      <!-- Botón -->
       <button type="submit" [disabled]="!employeeForm.valid" class="login-btn">
         Iniciar sesión
       </button>

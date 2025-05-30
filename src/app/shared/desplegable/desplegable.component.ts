@@ -47,16 +47,6 @@ export class DesplegableComponent implements OnInit {
   goToProducts() {
     this.router.navigateByUrl('/main/producto/all');
   }
-  // goToAdmin() {
-  //   this.router.navigateByUrl("/admin")
-  // }
-  // goToCompany() {
-  //   this.router.navigateByUrl("/main")
-  // }
-  // goToEmployee() {
-  //   this.router.navigateByUrl("/main")
-  // }
-
   toggleSidebar() {
     this.isOpen = !this.isOpen;
     this.desplegableService.setSidebarState(this.isOpen);

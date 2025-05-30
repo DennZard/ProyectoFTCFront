@@ -37,7 +37,7 @@ const routes: Routes = [
       },
       {
         path: 'empleado',
-        canActivate: [employeeGuard],
+        canActivate: [],
         data: {},
         loadChildren: () =>
           import('./employee/employee.module').then((m) => m.EmployeeModule),

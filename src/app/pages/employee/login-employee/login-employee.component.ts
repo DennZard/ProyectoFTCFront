@@ -23,7 +23,9 @@ export class LoginEmployeeComponent implements OnInit {
   loginEmployee($event: MouseEvent) {
     this.employeeService.loginEmployee(this.employeeForm.value).subscribe((empl: Employee) => {
       sessionStorage.setItem('user', JSON.stringify(empl));
-      this.router.navigateByUrl("/main/empleado/cambioEntregas")
+      if (JSON.parse(sessionStorage.getItem("user"))?.name) {
+        this.router.navigateByUrl("/main/empleado/cambioEntregas")
+      }
     });
   }
 

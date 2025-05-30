@@ -19,8 +19,8 @@ export class AuthService {
   }
 
   get user() {
-    var user = JSON.parse(sessionStorage.getItem('user')).data.user;
-    console.log("password" in user);
+    var user = JSON.parse(sessionStorage.getItem('user'))?.data?.user;
+    console.log(user?.password);
     if (user?.roles) {
       const object = JSON.parse(sessionStorage.getItem('user'));
       const userObject = object.data.user;
