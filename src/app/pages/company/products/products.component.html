@@ -1,31 +1,51 @@
-<div class="animate__animated animate__fadeIn animate__faster">
-  <div class="container">
-    <br />
-    <div class="card__v" *ngFor="let product of products">
-      <p-card>
-        <ng-template pTemplate="header">
-          <div>
-          <img [src]="getImage(product)" class="img position__img"/>
-          </div>
-          <br/>
-          <div>
-            <p>Nombre: {{ product.name}}</p>
-            <p>Precio: {{ product.price | currency : "€" }}</p>
-          </div>
-        </ng-template>
-      </p-card>
-      <ng-template pTemplate="footer">
-        Cantidad: {{ product.stock}}
+  <div class="animate__animated animate__fadeIn animate__faster limiter">
+    <div class="container">
+      <ng-container *ngIf="products.length > 0; else noProducts">
+        <div class="card__v" *ngFor="let product of products">
+          <p-card>
+            <ng-template pTemplate="header">
+              <div>
+                <img [src]="getImage(product)" class="img position__img" />
+              </div>
+              <br />
+              <div class="product-content">
+                <p>Nombre: {{ product.name }}</p>
+                <p>Precio: {{ product.price | currency : "€" }}</p>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="footer">
+              Cantidad: {{ product.stock }}
+              <br />
+              Cantidad: {{ product.sells }}
+            </ng-template>
+          </p-card>
+        </div>
+      </ng-container>
+
+      <ng-template #noProducts>
+        <div class="no-products-card">
+          <p-card>
+            <ng-template pTemplate="header">
+              <h2 class="no-products-title">No hay productos disponibles</h2>
+            </ng-template>
+            <ng-template pTemplate="content">
+              <p style="text-align: center">
+                Actualmente no hay productos registrados. Pulsa en “Nuevo
+                Producto” para crear uno.
+              </p>
+            </ng-template>
+          </p-card>
+        </div>
       </ng-template>
     </div>
+
+    <div class="position_btn_nuevoProducto btn">
+      <button
+        pButton
+        [routerLink]="['/main/compania/nuevo-producto']"
+        label="Nuevo Producto"
+        icon="pi pi-plus"
+        class="p-button-succes"
+      ></button>
+    </div>
   </div>
-  <div class="position_btn_nuevoLibro">
-    <button
-      pButton
-      [routerLink]="['/main/compania/nuevo-producto']"
-      label="Nuevo Producto"
-      icon="pi pi-plus"
-      class="p-button-succes"
-    ></button>
-  </div>
-</div>

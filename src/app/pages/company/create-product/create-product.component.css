@@ -1,16 +1,9 @@
-/* img {
-  width: 20%;
-  height: 10%;
-  margin-top: 2%;
-  margin-left: 2%;
-} */
 .page-wrapper {
   padding: 2rem;
   display: flex;
   justify-content: center;
 }
 
-/* Card */
 .producto-card {
   width: 100%;
   max-width: 1100px;
@@ -18,7 +11,6 @@
   box-sizing: border-box;
 }
 
-/* Contenido */
 .producto-container {
   display: flex;
   flex-direction: row;
@@ -29,7 +21,6 @@
   flex-wrap: wrap;
 }
 
-/* Imagen */
 .producto-img-section {
   flex: 1;
   min-width: 250px;
@@ -48,7 +39,6 @@
   background-color: #f4f4f4;
 }
 
-/* Formulario */
 .producto-form-section {
   flex: 2;
   min-width: 300px;
@@ -76,7 +66,6 @@
   color: #666;
 }
 
-/* INPUT PERSONALIZADO */
 input[pInputText] {
   width: 100%;
   border: 2px solid #cfe2ff;
@@ -102,14 +91,12 @@ p {
   color: red;
 }
 
-/* Botón */
 .btn-form {
   margin-top: 2rem;
   display: flex;
   justify-content: flex-start;
 }
 
-/* Botón desactivado */
 .p-button[disabled] {
   background-color: #ccc !important;
   border-color: #ccc !important;
@@ -118,7 +105,6 @@ p {
   opacity: 0.7;
 }
 
-/* Botón activado */
 .p-button-success:not([disabled]) {
   background-color: #0d6efd !important;
   border-color: #0b5ed7 !important;
@@ -132,7 +118,6 @@ p {
   box-shadow: 0 6px 15px rgba(13, 110, 253, 0.4);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .producto-container {
     flex-direction: column;
@@ -143,7 +128,6 @@ p {
   }
 }
 
-/* Estilo general para los dropdowns */
 :host ::ng-deep .p-dropdown {
   width: 100%;
   border: 2px solid #cfe2ff;
@@ -155,19 +139,36 @@ p {
   background-color: white;
 }
 
-/* Borde cuando está enfocado */
 :host ::ng-deep .p-dropdown.p-focus {
   border-color: #0d6efd;
   box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
 }
 
-/* El ícono de flecha más grande */
 :host ::ng-deep .p-dropdown .p-dropdown-trigger {
   width: 2.5rem;
 }
 
-/* Aumentar tamaño de los ítems del dropdown */
 :host ::ng-deep .p-dropdown-items .p-dropdown-item {
   padding: 0.75rem 1rem;
   font-size: 1rem;
+}
+
+
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
 }

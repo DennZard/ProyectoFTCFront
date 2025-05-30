@@ -40,7 +40,8 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.desplegableService.isSidebarOpen$.subscribe(
+    this.subscription = this.desplegableService.isSidebarOpen$
+    .subscribe(
       (open) => {
         this.sidebarOpen = open;
       }

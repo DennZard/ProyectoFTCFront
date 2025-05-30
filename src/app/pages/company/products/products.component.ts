@@ -19,8 +19,15 @@ export class ProductsComponent implements OnInit {
     this.companyService
       .getProducts(User.getUser().company.id)
       .subscribe((products: Product[]) => {
-        this.products = products;
+        if (products) {
+          this.products = products;
+        } else {
+          console.log("No hay productos")
+        }
       });
+      if (this.products.length === 0) {
+        console.log("Esta vacio")
+      }
   }
 
   getImage(product: Product) {

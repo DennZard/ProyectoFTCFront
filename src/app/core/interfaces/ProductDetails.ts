@@ -8,4 +8,5 @@ export interface ProductDetails {
   added:Date,
   company: Company,
   sells:number
+  stock:number
 }
