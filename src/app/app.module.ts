@@ -11,22 +11,29 @@ import { CardModule } from 'primeng/card';
 import { AuthLayoutModule } from './layouts/auth/auth-layout.module';
 import { MainModule } from './layouts/main/main.module';
 import { CommonModule } from '@angular/common';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
     AuthModule,
     PagesModule,
-    BrowserAnimationsModule,
     CardModule,
     AuthLayoutModule,
-    MainModule
+    MainModule,
+    DialogModule,
+    ButtonModule,
+    ConfirmDialogModule,
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

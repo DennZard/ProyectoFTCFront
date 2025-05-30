@@ -3,7 +3,6 @@
     <h1 class="title">Registro</h1>
 
     <form [formGroup]="userRegisterForm">
-      <!-- Nombre de Usuario -->
       <div class="form-field">
         <input
           type="text"
@@ -12,12 +11,10 @@
         />
       </div>
 
-      <!-- Email -->
       <div class="form-field">
         <input type="email" placeholder="Email" formControlName="email" />
       </div>
 
-      <!-- Número de Teléfono -->
       <div class="form-field">
         <input
           type="text"
@@ -26,7 +23,6 @@
         />
       </div>
 
-      <!-- Contraseña -->
       <div class="form-field">
         <input
           type="password"
@@ -39,7 +35,6 @@
         >
       </div>
 
-      <!-- Repetir Contraseña -->
       <div class="form-field">
         <input
           type="password"
@@ -61,25 +56,23 @@
           Las contraseñas no coinciden
         </small>
       </div>
-      <!-- Botón Registrar -->
       <div class="button-group">
         <button
           type="submit"
           class="btn register-button"
           (click)="registerUser()"
         >
-          Registrar
+          Registrarse
         </button>
       </div>
 
-      <!-- Enlace a login -->
       <p class="login-link">
         ¿Ya tienes una cuenta?
         <a (click)="logInUserBtn()">Logeate</a>
       </p>
     </form>
   </div>
-  <a routerLink="/main" class="back-button p-button p-component">
+  <a routerLink="/main/inicio" class="back-button p-button p-component">
     ← Volver a inicio
   </a>
 </div>

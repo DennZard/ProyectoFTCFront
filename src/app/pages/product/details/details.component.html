@@ -1,8 +1,9 @@
 <div class="product-details-container animate__animated animate__fadeIn">
-  <div class="product-details-card p-shadow-4" [ngClass]="{'moved-data': sidebarOpen}">
-    <div
-    class="product-image-section"
-    >
+  <div
+    class="product-details-card p-shadow-4"
+    [ngClass]="{ 'moved-data': sidebarOpen }"
+  >
+    <div class="product-image-section">
       <img [src]="getImage(product)" class="product-image" />
     </div>
 
@@ -33,15 +34,31 @@
         <span class="label">Ventas:</span>
         <span>{{ product.sells }}</span>
       </div>
-      <button
-        pButton
-        label="Volver"
-        icon="pi pi-arrow-left"
-        class=""
-        (click)="buyProduct(200)"
-      >
+      <button class="buy-button" (click)="buyProduct(200)">
+        <i class="pi pi-shopping-cart" style="margin-right: 8px"></i>
         Comprar
       </button>
+
+      <p-card
+        *ngIf="displayDialog"
+        class="feedback-card fade-in-top"
+        [style]="{
+          'background-color': '#3da3ec',
+          'padding-left': '10px',
+          height: '60px',
+          'padding-top': '10px'
+        }"
+      >
+        <ng-template pTemplate="title"> Resultado de la compra </ng-template>
+        <ng-template pTemplate="content">
+          <div class="dialog-content">
+            <p>{{ dialogMessage }}</p>
+            <button class="close-button" (click)="displayDialog = false">
+              Cerrar
+            </button>
+          </div>
+        </ng-template>
+      </p-card>
     </div>
   </div>
   <button

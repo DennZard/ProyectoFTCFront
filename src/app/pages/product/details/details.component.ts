@@ -18,13 +18,16 @@ export class DetailsComponent implements OnInit {
   product: Product;
   sidebarOpen = false;
   private subscription: Subscription;
+  displayDialog: boolean = false;
+  dialogMessage: string = '';
+  isPurchaseSuccess: boolean = true;
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
   getImage(product: Product) {
     if (!product.image) {
-      return`assets/placeholder.png`;
+      return `assets/placeholder.png`;
     } else {
       if (!product.image.includes('.jpg') && !product.image.includes('.png')) {
         return `assets/placeholder.png`;
@@ -42,12 +45,12 @@ export class DetailsComponent implements OnInit {
         this.sidebarOpen = open;
       }
     );
-    this.sidebarOpen = false
+    this.sidebarOpen = false;
     this.route.paramMap.subscribe((params) => {
       this.id = Number(params.get('id'));
       this.cargarProducto();
     });
-    console.log(this.product)
+    console.log(this.product);
   }
 
   goToAll() {
@@ -62,23 +65,26 @@ export class DetailsComponent implements OnInit {
   }
 
   buyProduct(money: number) {
-    money = 300;
-    var destination = "Mi casa2"
-    var user = User.getUser()
-    const dto: BuyProduct  = {
+    money = 100;
+    var destination = 'Mi casa2';
+    var user = User.getUser();
+    const dto: BuyProduct = {
       id: this.id,
       money: money,
       destination: destination,
-      userId: user.id
-    }
-    this.productService
-      .buyProduct(dto)
-      .subscribe((compra: boolean) => {
-        console.log(compra);
-      });
-      setTimeout(() => {
-        this.cargarProducto()
-      }, 1000);
+      userId: user.id,
+    };
+
+    this.productService.buyProduct(dto).subscribe((compra: boolean) => {
+      this.dialogMessage = compra
+        ? 'Compra realizada con éxito'
+        : 'La compra no se pudo completar, intentelo de nuevo más tarde ';
+      this.isPurchaseSuccess = compra;
+      this.displayDialog = true;
+    });
+    setTimeout(() => {
+      this.cargarProducto();
+    }, 1000);
   }
 
   constructor(
