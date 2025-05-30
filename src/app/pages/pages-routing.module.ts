@@ -6,6 +6,7 @@ import { Roles } from '../core/models/Roles.enum';
 import { NoPermsComponent } from './no-perms/no-perms.component';
 import { MainComponent } from '../layouts/main/main.component';
 import { AuthLayoutComponent } from '../layouts/auth/auth-layout.component';
+import { employeeGuard } from '../guard/employee.guard';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'empleado',
-        canActivate: [],
+        canActivate: [employeeGuard],
         data: {},
         loadChildren: () =>
           import('./employee/employee.module').then((m) => m.EmployeeModule),

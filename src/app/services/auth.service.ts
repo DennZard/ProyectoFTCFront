@@ -10,7 +10,7 @@ export class AuthService {
   get isLogged(): boolean {
     var user = JSON.parse(sessionStorage.getItem("user"))
     console.log(user)
-    if (user && user?.data?.user?.password) {
+    if (user && user?.data?.user?.roles) {
       return true;
     } else {
       console.log(user?.data?.user?.password);
@@ -21,7 +21,7 @@ export class AuthService {
   get user() {
     var user = JSON.parse(sessionStorage.getItem('user')).data.user;
     console.log("password" in user);
-    if (user?.password) {
+    if (user?.roles) {
       const object = JSON.parse(sessionStorage.getItem('user'));
       const userObject = object.data.user;
       return new User(
@@ -32,6 +32,7 @@ export class AuthService {
         userObject.phone,
         userObject.company,
         userObject.roles
+
       );
     }
     return null

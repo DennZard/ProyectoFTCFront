@@ -1,29 +1,28 @@
-<p-table [value]="employees" responsiveLayout="scroll">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Email</th>
-      <th>Teléfono</th>
-      <th>Activo</th>
-      <th>Acciones</th>
-    </tr>
-  </ng-template>
+<div class="page-container">
+  <div class="card">
+    <h2 class="card-title">Lista de Empleados</h2>
 
-  <ng-template pTemplate="body" let-employee>
-    <tr>
-      <td>{{ employee.id }}</td>
-      <td>{{ employee.name }}</td>
-      <td>{{ employee.lastName }}</td>
-      <td>{{ employee.email }}</td>
-      <td>{{ employee.phone }}</td>
-      <td>{{ employee.active ? 'Sí' : 'No' }}</td>
-      <td>
-        <button pButton icon="pi pi-times" class=" p-button-danger"
-                (click)="deleteUsuario(employee.id)"></button>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-<button pButton icon pi pi-times (click)="deleteUsuario(5)">Eliminar </button>
+    <div class="header-grid">
+      <span>Nombre</span>
+      <span>Apellido</span>
+      <span>Email</span>
+      <span>Teléfono</span>
+      <span>Activo</span>
+      <span>Acción</span>
+    </div>
+    <div class="employee-list-container">
+      <ul class="employee-list">
+        <li *ngFor="let employee of employees" class="employee-item">
+          <div class="employee-grid">
+            <span>{{ employee.name }}</span>
+            <span>{{ employee.lastName }}</span>
+            <span>{{ employee.email }}</span>
+            <span>{{ employee.phone }}</span>
+            <span>{{ employee.active ? 'Sí' : 'No' }}</span>
+            <button class="delete-button" (click)="deleteUsuario(employee.id)">Eliminar</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
