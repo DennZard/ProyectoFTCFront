@@ -7,13 +7,12 @@ import { PagesRoutingModule } from './pages/pages-routing.module';
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent, pathMatch: 'full' },
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: '', redirectTo: '/main/inicio', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
-    AuthRoutingModule,
     PagesRoutingModule
   ],
   exports: [RouterModule]

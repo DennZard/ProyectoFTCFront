@@ -7,6 +7,9 @@ import { NoPermsComponent } from './no-perms/no-perms.component';
 import { MainComponent } from '../layouts/main/main.component';
 import { AuthLayoutComponent } from '../layouts/auth/auth-layout.component';
 import { employeeGuard } from '../guard/employee.guard';
+import { AuthRoutingModule } from '../auth/auth-routing.module';
+import { LoginComponent } from '../auth/login/login.component';
+import { MainPageComponent } from './main-page.component';
 
 const routes: Routes = [
   {
@@ -54,21 +57,23 @@ const routes: Routes = [
     ],
   },
   {
-    path: '',
+    path: 'main',
     component: AuthLayoutComponent,
     children: [
       {
-        path: 'main/login',
-        loadComponent: () =>
-          import('../auth/login/login.component').then((m) => m.LoginComponent),
+        path: 'login',
+        component: LoginComponent,
       },
       {
-        path: 'main/register',
-        loadComponent: () =>
-          import('../auth/register/register.component').then(
-            (m) => m.RegisterComponent
-          ),
+        path: 'register',
+        component: RegisterComponent,
       },
+    ],
+  },
+  {
+    path: 'main',
+    component: MainPageComponent,
+    children: [
       {
         path: 'no-authorized',
         component: NoPermsComponent,
@@ -79,6 +84,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes),
+    AuthRoutingModule
   ],
   exports: [RouterModule]
 })
