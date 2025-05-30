@@ -22,17 +22,17 @@ export class ProductsComponent implements OnInit {
         if (products) {
           this.products = products;
         } else {
-          console.log("No hay productos")
+          console.log('No hay productos');
         }
       });
-      if (this.products.length === 0) {
-        console.log("Esta vacio")
-      }
+    if (this.products.length === 0) {
+      console.log('Esta vacio');
+    }
   }
 
   getImage(product: Product) {
     if (!product.image) {
-      return`assets/placeholder.png`;
+      return `assets/placeholder.png`;
     } else {
       if (!product.image.includes('.jpg') && !product.image.includes('.png')) {
         return `assets/placeholder.png`;
@@ -41,6 +41,6 @@ export class ProductsComponent implements OnInit {
         return product.image;
       }
     }
-    return `assets/placeholder.png`
+    return `assets/placeholder.png`;
   }
 }

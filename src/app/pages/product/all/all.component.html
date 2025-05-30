@@ -1,5 +1,17 @@
 <div class="animate__animated animate__fadeIn animate__faster">
+  <div>
+    <input
+      type="text"
+      pInputText
+      placeholder="Buscar por nombre"
+      [ngClass]="{'moved-search' : sidebarOpen}"
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="filterProducts()"
+      style="width: 300px;"
+    />
+  </div>
   <div class="product-container" [ngClass]="{'moved-data' : sidebarOpen}">
+
     <div
       class="product-card"
       *ngFor="let product of products"

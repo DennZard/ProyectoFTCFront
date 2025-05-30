@@ -15,15 +15,27 @@ export class AllComponent implements OnInit {
   products: Product[] = [];
   sidebarOpen = false;
   private subscription: Subscription;
-
+  searchTerm: string = '';
 
   constructor(
     private productService: ProductService,
-     private router: Router,
-     private desplegableService: DesplegableService
-    ) {}
+    private router: Router,
+    private desplegableService: DesplegableService
+  ) {}
 
-
+  filterProducts() {
+    if (this.searchTerm.trim().length === 0) {
+      this.productService.getAll().subscribe((products: Product[]) => {
+        this.products = products;
+      });
+    } else {
+      this.productService
+        .filterByPrefix(this.searchTerm)
+        .subscribe((filtered: Product[]) => {
+          this.products = filtered;
+        });
+    }
+  }
 
   ngOnInit(): void {
     this.subscription = this.desplegableService.isSidebarOpen$.subscribe(
@@ -31,7 +43,7 @@ export class AllComponent implements OnInit {
         this.sidebarOpen = open;
       }
     );
-    this.sidebarOpen = false
+    this.sidebarOpen = false;
     this.productService.getAll().subscribe((products: Product[]) => {
       this.products = products;
     });
@@ -43,7 +55,7 @@ export class AllComponent implements OnInit {
 
   getImage(product: Product) {
     if (!product.image) {
-      return`assets/placeholder.png`;
+      return `assets/placeholder.png`;
     } else {
       if (!product.image.includes('.jpg') && !product.image.includes('.png')) {
         return `assets/placeholder.png`;

@@ -1,3 +1,21 @@
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.p-input-icon-left {
+  width: 50%;
+}
+
+input[pInputText] {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
 .img {
   height: 45vh;
   width: 100%;

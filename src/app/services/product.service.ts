@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   public filterByPrefix(prefix: String) {
-    return this.http.get<Product>(`${this.baseUrl}prefix?rpefix=` + prefix);
+    return this.http.get<Product[]>(`${this.baseUrl}prefix?prefix=` + prefix);
   }
 
   public getPopular() {

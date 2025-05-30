@@ -20,13 +20,20 @@
       <button class="dropdown-toggle" (click)="toggleSubMenu('company')">
         🏢 Empresa
       </button>
-      <div *ngIf="openSubMenu === 'company'" class="sub-menu">
-        <a (click)="navigateTo('/company/about'); toggleSidebar()">ℹ️ Sobre Nosotros</a>
-        <a (click)="navigateTo('/company/contact'); toggleSidebar()">📞 Contacto</a>
+      <div *ngIf="openSubMenu === 'company' && usuario" class="sub-menu">
+        <a *ngIf = "!usuario.hasRole('Seller')" (click)="navigateTo('/main/compania/nueva'); toggleSidebar()">🏭 Crear Compañia</a>
+        <a *ngIf = "usuario.hasRole('Seller')" (click)="navigateTo('/main/compania/productos'); toggleSidebar()">📦 Productos</a>
+        <a *ngIf = "usuario.hasRole('Seller')" (click)="navigateTo('/main/compania/nuevo-producto'); toggleSidebar()">➕ Nuevo Producto</a>
+      </div>
+      <button *ngIf="usuario.hasRole('Admin')" class="dropdown-toggle" (click)="toggleSubMenu('admin')">
+        🏢 Admin
+      </button>
+      <div *ngIf="openSubMenu === 'admin' && usuario" class="sub-menu">
+        <a *ngIf = "usuario.hasRole('Admin')" (click)="navigateTo('/main/admin/nuevo'); toggleSidebar()">➕ Registrar Empleado</a>
+        <a *ngIf = "usuario.hasRole('Admin')" (click)="navigateTo('/main/admin/empleados'); toggleSidebar()">👤 Empleados</a>
+        <a *ngIf = "usuario.hasRole('Admin')" (click)="navigateTo('/main/admin/compania'); toggleSidebar()">🏢 Companias</a>
       </div>
     </div>
-    <!-- <a routerLink="/admin" (click)="toggleSidebar()">⚙️ Configuración</a>
-    <a routerLink="/company" (click)="toggleSidebar()">📞 Contacto</a> -->
   </nav>
 </div>
 
