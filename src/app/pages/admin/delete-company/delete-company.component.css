@@ -43,6 +43,7 @@ body {
   font-size: 1.4rem;
   width: 2.8rem;
   height: 2.8rem;
+  color: red;
 }
 
 /* Tooltip (opcional si no se ve bien sobre el fondo azul) */

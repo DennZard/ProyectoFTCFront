@@ -41,6 +41,7 @@ export class AllCustomerComponent implements OnInit{
           "Entrega cancelada con exito",
           "success"
         )
+        this.getDeliveries(User.getUser().id);
       } else {
         Swal.fire(
           "No se pudo cancelar la entrega",
