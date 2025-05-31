@@ -2,6 +2,7 @@
   <div class="logo">Mi Aplicación</div>
   <div class="user-actions">
     <ng-container *ngIf="usuario; else loginRegister">
+      <button class="header-btn" (click)="logOff()">Log off</button>
       <span class="username">👤 {{ usuario.username }}</span>
     </ng-container>
     <ng-template #loginRegister>

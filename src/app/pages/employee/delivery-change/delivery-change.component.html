@@ -1,17 +1,26 @@
-<div *ngFor="let delivery of deliveries" class="p-4 border rounded mb-4 shadow-sm bg-white">
-  <h3 class="text-lg font-semibold">{{ delivery.product.name }}</h3>
-  <p><strong>Email del usuario:</strong> {{ delivery.customer.email }}</p>
-  <p><strong>Destino:</strong> {{ delivery.destination }}</p>
+<body>
+  <div class="deliveries-container">
+    <div *ngFor="let delivery of deliveries" class="delivery-card">
+      <div class="delivery-info-row">
+        <div>
+          <h3>{{ delivery.product.name }}</h3>
+          <p>
+            <strong>Email del usuario:</strong> {{ delivery.customer.email }}
+          </p>
+          <p><strong>Destino:</strong> {{ delivery.destination }}</p>
+        </div>
 
-  <p-dropdown
-  [options]="statuses"
-  [(ngModel)]="delivery.status"
-  optionLabel="name"
-  [disabled]="!delivery.status.cancelable"
-  placeholder="Cambiar estado"
-  (onChange)="cambiarEstado(delivery)"
-  class="mt-2 w-full"
-  [style]="{'min-width': '180px'}">
-</p-dropdown>
-    Cambiar estado
-</div>
+        <p-dropdown
+          class="delivery-status"
+          [options]="statuses"
+          [(ngModel)]="delivery.status"
+          optionLabel="name"
+          [disabled]="!delivery.status.cancelable"
+          placeholder="Cambiar estado"
+          (onChange)="cambiarEstado(delivery)"
+        >
+        </p-dropdown>
+      </div>
+    </div>
+  </div>
+</body>

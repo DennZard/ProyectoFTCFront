@@ -34,7 +34,7 @@ body {
   background-color: #2563eb;
   border: none;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -47,6 +47,8 @@ body {
 .username {
   font-weight: 500;
   color: #e0e7ff;
+  padding: 10px 12px;
+    border-radius: 6px;
 }
 
 .sidebar-container {
@@ -96,7 +98,7 @@ body {
 
 .open-sidebar-btn {
   position: fixed;
-  top: 4px;
+  top: 10px;
   left: 20px;
   font-size: 16px;
   background-color: #2563eb;

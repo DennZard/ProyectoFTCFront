@@ -13,12 +13,17 @@ import { User } from '../../core/models/User';
 })
 export class DesplegableComponent implements OnInit {
   isOpen = false;
-  usuario: User;
+  usuario: any;
   openSubMenu: string | null = null;
   showEmployee:boolean
 
   toggleSubMenu(menu: string): void {
     this.openSubMenu = this.openSubMenu === menu ? null : menu;
+  }
+
+  logOff () {
+    sessionStorage.removeItem("user")
+    this.router.navigateByUrl("main/login")
   }
 
   constructor(
@@ -32,8 +37,9 @@ export class DesplegableComponent implements OnInit {
     if (this.isUser()) {
       this.usuario = this.authService.user;
     }
-
-
+    if (this.authEmployeeService.employee) {
+      this.usuario = this.authEmployeeService.employee
+    }
   }
 
   navigateTo(route: string): void {

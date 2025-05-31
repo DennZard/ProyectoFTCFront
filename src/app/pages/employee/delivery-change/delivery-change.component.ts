@@ -54,7 +54,7 @@ export class DeliveryChangeComponent implements OnInit {
   }
 
   getDeliveriesByEmployee() {
-    var idHardcodeado = 2;
+    var idHardcodeado = 1;
     this.deliveryService
       .getDeliveriesByEmployeeId(idHardcodeado)
       .subscribe((deliveries: Delivery[]) => {
