@@ -75,7 +75,6 @@ export class DesplegableComponent implements OnInit {
       console.log("Soy un usuario")
       return true
     }
-
     console.log("No soy un usuario")
     return false
   }

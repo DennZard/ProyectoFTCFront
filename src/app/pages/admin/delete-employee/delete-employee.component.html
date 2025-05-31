@@ -18,8 +18,10 @@
             <span>{{ employee.lastName }}</span>
             <span>{{ employee.email }}</span>
             <span>{{ employee.phone }}</span>
-            <span>{{ employee.active ? 'Sí' : 'No' }}</span>
-            <button class="delete-button" (click)="deleteUsuario(employee.id)">Eliminar</button>
+            <span>{{ employee.active ? "Sí" : "No" }}</span>
+            <button class="delete-button" (click)="deleteUsuario(employee.id)">
+              Eliminar
+            </button>
           </div>
         </li>
       </ul>

@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
       return false;
     }
 
-    if (!this.authService.hasRole(expectedRole)) {
+    if (!this.authService?.hasRole(expectedRole)) {
       this.router.navigate(['/no-authorized']);
       return false;
     }

@@ -1,36 +1,100 @@
-<form [formGroup]="employeeForm">
-  <div>
-    <label for="email">Email:</label>
-    <input id="email" type="email" formControlName="email" />
-    <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
-      <small *ngIf="employeeForm.get('email')?.errors?.['required']">El email es obligatorio.</small>
-      <small *ngIf="employeeForm.get('email')?.errors?.['email']">Formato de email inválido.</small>
+<body>
+  <div class="page-wrapper">
+    <div
+      class="form-card"
+      style="
+        background-color: #e7f0ff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div class="producto-container" style="flex-direction: column">
+        <div class="producto-form-section">
+          <form [formGroup]="employeeForm" (ngSubmit)="createEmployee($event)">
+            <div class="form-group">
+              <label class="p-inputgroup-addon" for="email">Email:</label>
+              <input
+                id="email"
+                type="email"
+                pInputText
+                formControlName="email"
+              />
+              <p
+                *ngIf="
+                  employeeForm.get('email')?.invalid &&
+                  employeeForm.get('email')?.touched
+                "
+              >
+                <small *ngIf="employeeForm.get('email')?.errors?.['required']"
+                  >El email es obligatorio.</small
+                >
+                <small *ngIf="employeeForm.get('email')?.errors?.['email']"
+                  >Formato de email inválido.</small
+                >
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="p-inputgroup-addon" for="name">Nombre:</label>
+              <input id="name" type="text" pInputText formControlName="name" />
+              <p
+                *ngIf="
+                  employeeForm.get('name')?.invalid &&
+                  employeeForm.get('name')?.touched
+                "
+              >
+                <small>El nombre es obligatorio.</small>
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="p-inputgroup-addon" for="lastName">Apellido:</label>
+              <input
+                id="lastName"
+                type="text"
+                pInputText
+                formControlName="lastName"
+              />
+              <p
+                *ngIf="
+                  employeeForm.get('lastName')?.invalid &&
+                  employeeForm.get('lastName')?.touched
+                "
+              >
+                <small>El apellido es obligatorio.</small>
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="p-inputgroup-addon" for="phone">Teléfono:</label>
+              <input
+                id="phone"
+                type="text"
+                pInputText
+                formControlName="phone"
+              />
+              <p
+                *ngIf="
+                  employeeForm.get('phone')?.invalid &&
+                  employeeForm.get('phone')?.touched
+                "
+              >
+                <small>El teléfono es obligatorio.</small>
+              </p>
+            </div>
+
+            <div class="btn-form">
+              <button
+                type="submit"
+                pButton
+                label="Enviar"
+                class="p-button p-button-success"
+                [disabled]="employeeForm.invalid"
+              ></button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div>
-    <label for="name">Nombre:</label>
-    <input id="name" type="text" formControlName="name" />
-    <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched">
-      <small>El nombre es obligatorio.</small>
-    </div>
-  </div>
-
-  <div>
-    <label for="lastName">Apellido:</label>
-    <input id="lastName" type="text" formControlName="lastName" />
-    <div *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched">
-      <small>El apellido es obligatorio.</small>
-    </div>
-  </div>
-
-  <div>
-    <label for="phone">Teléfono:</label>
-    <input id="phone" type="text" formControlName="phone" />
-    <div *ngIf="employeeForm.get('phone')?.invalid && employeeForm.get('phone')?.touched">
-      <small>El teléfono es obligatorio.</small>
-    </div>
-  </div>
-
-  <button type="submit" [disabled]="employeeForm.invalid" (click)="createEmployee($event)">Enviar</button>
-</form>
+</body>
