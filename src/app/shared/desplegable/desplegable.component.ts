@@ -35,9 +35,11 @@ export class DesplegableComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.authService.user)
     if (this.isUser()) {
+      console.log("Pues soy un usuario")
       this.usuario = this.authService.user;
     }
     if (this.authEmployeeService.employee) {
+      console.log("Pues soy un empleado")
       this.usuario = this.authEmployeeService.employee
     }
   }
@@ -64,10 +66,10 @@ export class DesplegableComponent implements OnInit {
   isEmployee(){
      if (this.authEmployeeService.employee) {
       console.log("Soy un empleado")
-      return false
+      return true
     }
     console.log("No soy un empleado")
-     return true
+     return false
   }
 
   isUser() {
@@ -76,6 +78,14 @@ export class DesplegableComponent implements OnInit {
       return true
     }
     console.log("No soy un usuario")
+    return false
+  }
+  isAdmin() {
+    if(this.isUser()) {
+      if (this.usuario?.hasRole("Admin")) {
+        return true
+      }
+    }
     return false
   }
 

@@ -3,7 +3,8 @@
   <div class="user-actions">
     <ng-container *ngIf="usuario; else loginRegister">
       <button class="header-btn" (click)="logOff()">Log off</button>
-      <span class="username">👤 {{ usuario.username }}</span>
+      <span *ngIf="isUser()" class="username">👤 {{ usuario.username }}</span>
+      <span *ngIf="isEmployee()" class="username">👤 {{ usuario.name }}</span>
     </ng-container>
     <ng-template #loginRegister>
       <button class="header-btn" (click)="goToLogin()">Login</button>
@@ -18,28 +19,28 @@
     <a (click)="goToMain(); toggleSidebar()">🏠 Inicio</a>
     <a (click)="goToProducts(); toggleSidebar()">👤 Productos</a>
     <div>
-      <button class="dropdown-toggle" (click)="toggleSubMenu('company')">
+      <button *ngIf="isUser()" class="dropdown-toggle" (click)="toggleSubMenu('company')">
         🏢 Empresa
       </button>
       <div *ngIf="openSubMenu === 'company' && usuario" class="sub-menu">
-        <a *ngIf = "!usuario?.hasRole('Seller')" (click)="navigateTo('/main/compania/nueva'); toggleSidebar()">🏭 Crear Compañia</a>
-        <a *ngIf = "usuario?.hasRole('Seller')" (click)="navigateTo('/main/compania/productos'); toggleSidebar()">📦 Productos</a>
-        <a *ngIf = "usuario?.hasRole('Seller')" (click)="navigateTo('/main/compania/nuevo-producto'); toggleSidebar()">➕ Nuevo Producto</a>
+        <a *ngIf="!usuario?.hasRole('Seller')" (click)="navigateTo('/main/compania/nueva'); toggleSidebar()">🏭 Crear Compañia</a>
+        <a *ngIf="usuario?.hasRole('Seller')" (click)="navigateTo('/main/compania/productos'); toggleSidebar()">📦 Productos</a>
+        <a *ngIf="usuario?.hasRole('Seller')" (click)="navigateTo('/main/compania/nuevo-producto'); toggleSidebar()">➕ Nuevo Producto</a>
       </div>
-      <button *ngIf="usuario?.hasRole('Admin')" class="dropdown-toggle" (click)="toggleSubMenu('admin')">
+      <button *ngIf="isAdmin()" class="dropdown-toggle" (click)="toggleSubMenu('admin')">
         🏢 Admin
       </button>
       <div *ngIf="openSubMenu === 'admin' && usuario" class="sub-menu">
-        <a *ngIf = "usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/nuevo'); toggleSidebar()">➕ Registrar Empleado</a>
-        <a *ngIf = "usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/empleados'); toggleSidebar()">👤 Empleados</a>
-        <a *ngIf = "usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/compania'); toggleSidebar()">🏢 Companias</a>
+        <a *ngIf="usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/nuevo'); toggleSidebar()">➕ Registrar Empleado</a>
+        <a *ngIf="usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/empleados'); toggleSidebar()">👤 Empleados</a>
+        <a *ngIf="usuario?.hasRole('Admin')" (click)="navigateTo('/main/admin/compania'); toggleSidebar()">🏢 Companias</a>
       </div>
       <button *ngIf="!isUser()"class="dropdown-toggle" (click)="toggleSubMenu('employee')">
         👤 Employee
       </button>
       <div *ngIf="openSubMenu === 'employee'" (click)="toggleSubMenu('employee')" class="sub-menu">
-        <a *ngIf="!isEmployee()" (click)="navigateTo('/main/empleado/cambioEntregas'); toggleSidebar()">Gestionar entregas</a>
-        <a *ngIf="isEmployee()" (click)="navigateTo('/main/empleado/login'); toggleSidebar()">Login</a>
+        <a *ngIf="isEmployee()" (click)="navigateTo('/main/empleado/cambioEntregas'); toggleSidebar()">Gestionar entregas</a>
+        <a *ngIf="!isEmployee()" (click)="navigateTo('/main/empleado/login'); toggleSidebar()">Login</a>
       </div>
     </div>
   </nav>
