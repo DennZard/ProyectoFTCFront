@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DesplegableService } from './desplegable.service';
 import { User } from '../../core/models/User';
+import { UsuarioSessionService } from '../../services/usuario-session.service';
 
 @Component({
   selector: 'app-desplegable',
@@ -30,9 +31,13 @@ export class DesplegableComponent implements OnInit {
     private desplegableService: DesplegableService,
     private router: Router,
     private authService: AuthService,
-    private authEmployeeService: AuthEmployeeService
+    private authEmployeeService: AuthEmployeeService,
+    private usuarioService: UsuarioSessionService
   ) {}
   ngOnInit(): void {
+    this.usuarioService.getUsuario().subscribe((usuario) => {
+      this.usuario = usuario;
+    });
     console.log(this.authService.user)
     if (this.isUser()) {
       console.log("Pues soy un usuario")
@@ -84,9 +89,10 @@ export class DesplegableComponent implements OnInit {
     console.log("No soy un usuario")
     return false
   }
+
   isAdmin() {
     if(this.isUser()) {
-      if (this.usuario?.hasRole("Admin")) {
+      if ((this.usuario.roles ?? []).includes('Admin')) {
         return true
       }
     }

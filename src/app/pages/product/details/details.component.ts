@@ -6,6 +6,7 @@ import { ProductService } from '../../../services/product.service';
 import { Subscription } from 'rxjs';
 import { BuyProduct } from '../../../core/interfaces/BuyProduct';
 import { User } from '../../../core/models/User';
+import { UsuarioSessionService } from '../../../services/usuario-session.service';
 
 @Component({
   selector: 'app-details',
@@ -21,10 +22,10 @@ export class DetailsComponent implements OnInit {
   displayDialog: boolean = false;
   dialogMessage: string = '';
   isPurchaseSuccess: boolean = true;
-  usuario= this.getUser()
+  usuario = this.getUser();
 
   getUser() {
-      return User.getUser()
+    return User.getUser();
   }
 
   ngOnDestroy() {
@@ -45,8 +46,7 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.desplegableService.isSidebarOpen$
-    .subscribe(
+    this.subscription = this.desplegableService.isSidebarOpen$.subscribe(
       (open) => {
         this.sidebarOpen = open;
       }
@@ -87,24 +87,26 @@ export class DetailsComponent implements OnInit {
         : 'La compra no se pudo completar, intentelo de nuevo más tarde ';
       this.isPurchaseSuccess = compra;
       this.displayDialog = true;
-      var object = JSON.parse(sessionStorage.getItem("user"))
+      var object = JSON.parse(sessionStorage.getItem('user'));
       if (object?.data?.user) {
-        object.data.user.money -= this.product.price
-        sessionStorage.setItem("user", JSON.stringify(object))
+        object.data.user.money -= this.product.price;
+        sessionStorage.setItem('user', JSON.stringify(object));
+        console.log(sessionStorage.getItem("user"))
+        this.usuarioSessionService.setUsuario(object.data.user);
       }
-      console.log(object)
+      console.log(object);
       setTimeout(() => {
         this.cargarProducto();
         this.usuario = this.getUser();
       }, 1000);
     });
-
   }
 
   constructor(
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute,
-    private desplegableService: DesplegableService
+    private desplegableService: DesplegableService,
+    private usuarioSessionService: UsuarioSessionService
   ) {}
 }
