@@ -34,10 +34,14 @@
         <span class="label">Stock:</span>
         <span>{{ product.stock }}</span>
       </div>
-      <button class="buy-button" (click)="buyProduct()">
+      <button [disabled]="!usuario" class="buy-button" (click)="buyProduct()">
         <i class="pi pi-shopping-cart" style="margin-right: 8px"></i>
         Comprar
       </button>
+
+      <p *ngIf="!usuario" class="auth-warning">
+        Debes ser un usuario registrado para comprar productos.
+      </p>
 
       <p-card
         *ngIf="displayDialog"

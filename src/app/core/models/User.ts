@@ -18,18 +18,35 @@ export class User {
   }
 
   static getUser() {
-    var object = JSON.parse(sessionStorage.getItem('user'));
-    var userObject = object.data.user;
-  console.log(userObject.money);
-   return new User(
-      userObject.id,
-      userObject.username,
-      "",
-      userObject.email,
-      userObject.phone,
-      userObject.company,
-      userObject.roles,
-      userObject.money
-    )
+    if (sessionStorage.getItem('user')) {
+      var object = JSON.parse(sessionStorage.getItem('user'));
+      if (object?.data) {
+        var userObject = object.data.user;
+        console.log(userObject.money);
+        return new User(
+          userObject.id,
+          userObject.username,
+          '',
+          userObject.email,
+          userObject.phone,
+          userObject.company,
+          userObject.roles,
+          userObject.money
+        );
+      } else {
+        console.log(sessionStorage.getItem('user'));
+        return new User(
+          object.id,
+          object.username,
+          '',
+          object.email,
+          object.phone,
+          object.company,
+          object.roles,
+          object.money
+        );
+      }
+    }
+    return null;
   }
 }

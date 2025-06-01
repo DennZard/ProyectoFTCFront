@@ -21,6 +21,11 @@ export class DetailsComponent implements OnInit {
   displayDialog: boolean = false;
   dialogMessage: string = '';
   isPurchaseSuccess: boolean = true;
+  usuario= this.getUser()
+
+  getUser() {
+      return User.getUser()
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

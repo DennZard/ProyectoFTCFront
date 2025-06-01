@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   padding: 0rem;
-  min-height: 96.7vh;
+  min-height: 90.7vh;
   background-color: #60aefc;
 }
 
@@ -40,6 +40,24 @@
   margin-bottom: 1.5rem;
   display: inline-flex;
   align-items: center;
+}
+
+.buy-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.auth-warning {
+  margin-top: 0.5rem;
+  color: #b91c1c; /* rojo */
+  font-weight: 500;
+  font-size: 0.95rem;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 0.75rem;
+  border-radius: 8px;
+  max-width: 400px;
 }
 
 .fade-in-top {
