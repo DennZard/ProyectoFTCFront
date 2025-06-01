@@ -1,3 +1,4 @@
+import { AuthEmployeeService } from './../../../services/authEmployee.service';
 import { DesplegableService } from './../../../shared/desplegable/desplegable.service';
 import { Router } from '@angular/router';
 import { Employee } from './../../../core/models/Employee';
@@ -46,7 +47,8 @@ export class DeliveryChangeComponent implements OnInit {
     private router: Router,
     private deliveryService: DeliveryService,
     private statusService: StatusService,
-    private desplegableService: DesplegableService
+    private desplegableService: DesplegableService,
+    private authEmployeeService: AuthEmployeeService
   ) {}
 
   ngOnInit(): void {
@@ -63,9 +65,8 @@ export class DeliveryChangeComponent implements OnInit {
   }
 
   getDeliveriesByEmployee() {
-    var idHardcodeado = 1;
     this.deliveryService
-      .getDeliveriesByEmployeeId(idHardcodeado)
+      .getDeliveriesByEmployeeId(this.authEmployeeService.employee.id)
       .subscribe((deliveries: Delivery[]) => {
         this.deliveries = deliveries;
       });

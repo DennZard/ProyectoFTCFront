@@ -1,5 +1,5 @@
 .login-container {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,9 +7,9 @@
   padding: 2rem;
 }
 
-/* Tarjeta */
 .login-card {
   background: white;
+  margin-bottom: 50px;
   padding: 2.5rem;
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -17,14 +17,12 @@
   max-width: 400px;
 }
 
-/* Título */
 .login-title {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #1a73e8;
 }
 
-/* Formulario */
 .login-form .form-group {
   margin-bottom: 1.2rem;
   display: flex;
@@ -49,7 +47,6 @@
   outline: none;
 }
 
-/* Botón */
 .login-btn {
   width: 100%;
   padding: 0.8rem;

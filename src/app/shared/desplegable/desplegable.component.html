@@ -1,7 +1,7 @@
 <header class="app-header">
   <div class="logo">Mi Aplicación</div>
   <div class="user-actions">
-    <ng-container *ngIf="usuario; else loginRegister">
+    <ng-container *ngIf="usuario || isEmployee(); else loginRegister">
       <button class="header-btn" (click)="logOff()">Log off</button>
       <span *ngIf="isUser()" class="username">👤 {{ usuario.username }}</span>
       <span *ngIf="isEmployee()" class="username">👤 {{ usuario.name }}</span>
