@@ -44,12 +44,12 @@ export class RegisterComponent implements OnInit {
 
   passWordEqual(password: string, password2: string) {
     return (formGroup: FormGroup) => {
-      const pass = formGroup.get("password");
-      const pass2 = formGroup.get("password2");
+      const pass = formGroup.get(password);
+      const pass2 = formGroup.get(password2);
 
-      if (!password || !password2) return;
+      if (!pass || !pass2) return;
 
-      if (pass.value === pass2) {
+      if (pass.value === pass2.value) {
         pass2.setErrors(null);
       } else {
         pass2.setErrors({ noEsIgual: true });
