@@ -46,6 +46,7 @@ export class DetailsComponent implements OnInit {
         this.sidebarOpen = open;
       }
     );
+    console.log(User.getUser());
     this.sidebarOpen = false;
     this.route.paramMap.subscribe((params) => {
       this.id = Number(params.get('id'));
@@ -65,13 +66,12 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  buyProduct(money: number) {
-    money = 100;
+  buyProduct() {
     var destination = 'Mi casa2';
     var user = User.getUser();
     const dto: BuyProduct = {
       id: this.id,
-      money: money,
+      money: user.money,
       destination: destination,
       userId: user.id,
     };

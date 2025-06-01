@@ -20,7 +20,7 @@
     <a (click)="goToProducts(); toggleSidebar()">👤 Productos</a>
     <a *ngIf="isUser()" (click)="goToDeliveries(); toggleSidebar()">📦 Entregas</a>
     <div>
-      <button *ngIf="isUser()" class="dropdown-toggle" (click)="toggleSubMenu('company')">
+      <button *ngIf="isUser() && usuario?.company" class="dropdown-toggle" (click)="toggleSubMenu('company')">
         🏢 Empresa
       </button>
       <div *ngIf="openSubMenu === 'company' && usuario" class="sub-menu">

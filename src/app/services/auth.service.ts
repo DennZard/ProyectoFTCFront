@@ -31,8 +31,8 @@ export class AuthService {
         userObject.email,
         userObject.phone,
         userObject.company,
-        userObject.roles
-
+        userObject.roles,
+        userObject.money
       );
     }
     return null

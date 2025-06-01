@@ -9,7 +9,8 @@ export class User {
     public email: String,
     public phone: String,
     public company: Company,
-    public roles: Roles[]
+    public roles: Roles[],
+    public money: number
   ) {}
 
   hasRole(roleName: string): boolean {
@@ -19,6 +20,7 @@ export class User {
   static getUser() {
     var object = JSON.parse(sessionStorage.getItem('user'));
     var userObject = object.data.user;
+  console.log(userObject.money);
    return new User(
       userObject.id,
       userObject.username,
@@ -27,6 +29,7 @@ export class User {
       userObject.phone,
       userObject.company,
       userObject.roles,
+      userObject.money
     )
   }
 }
