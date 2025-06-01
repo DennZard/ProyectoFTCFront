@@ -3,6 +3,7 @@
   <div class="user-actions">
     <ng-container *ngIf="usuario || isEmployee(); else loginRegister">
       <button class="header-btn" (click)="logOff()">Log off</button>
+      <span class="user-money">{{ usuario.money | currency:'EUR' }}</span>
       <span *ngIf="isUser()" class="username">👤 {{ usuario.username }}</span>
       <span *ngIf="isEmployee()" class="username">👤 {{ usuario.name }}</span>
     </ng-container>

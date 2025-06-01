@@ -87,10 +87,18 @@ export class DetailsComponent implements OnInit {
         : 'La compra no se pudo completar, intentelo de nuevo más tarde ';
       this.isPurchaseSuccess = compra;
       this.displayDialog = true;
+      var object = JSON.parse(sessionStorage.getItem("user"))
+      if (object?.data?.user) {
+        object.data.user.money -= this.product.price
+        sessionStorage.setItem("user", JSON.stringify(object))
+      }
+      console.log(object)
+      setTimeout(() => {
+        this.cargarProducto();
+        this.usuario = this.getUser();
+      }, 1000);
     });
-    setTimeout(() => {
-      this.cargarProducto();
-    }, 1000);
+
   }
 
   constructor(
