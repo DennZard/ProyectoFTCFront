@@ -17,6 +17,7 @@ import { CompanyCreate } from '../../../core/interfaces/CompanyCreate';
 import Swal from 'sweetalert2';
 import { DesplegableService } from '../../../shared/desplegable/desplegable.service';
 import { Subscription } from 'rxjs';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-create-company',
@@ -36,7 +37,8 @@ export class CreateCompanyComponent implements OnInit {
     private companyService: CompanyService,
     private authService: AuthService,
     private fb: FormBuilder,
-    private desplegableService: DesplegableService
+    private desplegableService: DesplegableService,
+    private userService: UserService
   ) {}
 
   saveCompany($event: MouseEvent) {
@@ -55,7 +57,20 @@ export class CreateCompanyComponent implements OnInit {
           'La compañia se creo con',
           'success'
         );
-        this.router.navigateByUrl("main/compania/productos")
+        this.userService.login({email: this.user.email, password: this.createCompany.value.password}).subscribe(
+                (data) => {
+                  sessionStorage.setItem('user', JSON.stringify(data));
+                },
+                (err) => {
+                  Swal.fire(
+                    'Error al iniciar sesion',
+                    'El usuario o la contraseña son incorrectos',
+                    'error'
+                  );
+                }
+              );
+          this.user = User.getUser()
+          this.router.navigateByUrl("main/compania/productos")
       } else {
         Swal.fire(
           'Error al crear la compañia',

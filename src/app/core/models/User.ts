@@ -6,7 +6,7 @@ export class User {
     public id: number,
     public username: String,
     public password: String,
-    public email: String,
+    public email: string,
     public phone: String,
     public company: Company,
     public roles: Roles[],
