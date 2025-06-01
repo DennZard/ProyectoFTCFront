@@ -1,6 +1,13 @@
+.title {
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .page-wrapper {
   background-color: #60aefc;
   min-height: 100vh;
+  width: 100%;
   padding: 2rem;
   display: flex;
   justify-content: center;
@@ -69,4 +76,9 @@ button[disabled] {
 .btn-eliminar:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.moved-data {
+  position: fixed;
+  left: 130px;
 }

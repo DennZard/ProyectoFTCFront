@@ -18,6 +18,7 @@
   <nav class="sidebar-nav">
     <a (click)="goToMain(); toggleSidebar()">🏠 Inicio</a>
     <a (click)="goToProducts(); toggleSidebar()">👤 Productos</a>
+    <a *ngIf="isUser()" (click)="goToDeliveries(); toggleSidebar()">📦 Entregas</a>
     <div>
       <button *ngIf="isUser()" class="dropdown-toggle" (click)="toggleSubMenu('company')">
         🏢 Empresa

@@ -1,4 +1,4 @@
-<body>
+<body [ngClass]="{ 'moved-data': sidebarOpen }">
   <div class="deliveries-container">
     <div *ngFor="let delivery of deliveries" class="delivery-card">
       <div class="delivery-info-row">
@@ -15,9 +15,9 @@
           [options]="statuses"
           [(ngModel)]="delivery.status"
           optionLabel="name"
-          [disabled]="!delivery.status.cancelable"
           placeholder="Cambiar estado"
           (onChange)="cambiarEstado(delivery)"
+          [disabled]="!delivery.status.cancelable"
         >
         </p-dropdown>
       </div>

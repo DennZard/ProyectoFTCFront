@@ -63,6 +63,10 @@ export class DesplegableComponent implements OnInit {
     this.router.navigateByUrl('/main/producto/all');
   }
 
+  goToDeliveries() {
+    this.router.navigateByUrl("/main/entrega/usuario")
+  }
+
   isEmployee(){
      if (this.authEmployeeService.employee) {
       console.log("Soy un empleado")

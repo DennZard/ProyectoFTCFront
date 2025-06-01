@@ -1,6 +1,6 @@
-<div class="page-wrapper">
+<div class="page-wrapper" [ngClass]="{'moved-data' : sidebarOpen}">
   <div class="card-wrapper">
-    <h2 class="text-xl font-bold mb-4 text-center">Historial de Entregas</h2>
+    <h1 class="title">Historial de Entregas</h1>
 
     <div class="overflow-x-auto">
       <table class="table-auto w-full border border-gray-300 rounded-lg shadow">
@@ -33,7 +33,7 @@
                 class="btn-eliminar"
                 [disabled]="!delivery.status.cancelable"
                 (click)="cancelDelivery(delivery.id)">
-                Eliminar
+                Cancelar
               </button>
             </td>
           </tr>

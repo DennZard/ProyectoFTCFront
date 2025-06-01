@@ -1,5 +1,6 @@
 body {
   background-color: #60aefc;
+  width:100%
 }
 
 .deliveries-container {
@@ -9,7 +10,6 @@ body {
   padding: 2rem;
 }
 
-/* Cada tarjeta de entrega ocupa casi todo el ancho */
 .delivery-card {
   width: 95%;
   max-width: 1200px;
@@ -26,7 +26,6 @@ body {
   border: black solid;
 }
 
-/* Cabecera */
 .delivery-card h3 {
   font-size: 1.4rem;
   font-weight: 600;
@@ -34,14 +33,12 @@ body {
   color: #2c3e50;
 }
 
-/* Información de texto */
 .delivery-card p {
   margin: 0.3rem 0;
   color: #555;
   font-size: 1rem;
 }
 
-/* Alineación horizontal con dropdown a la derecha */
 .delivery-info-row {
   display: flex;
   justify-content: space-between;
@@ -49,10 +46,14 @@ body {
   flex-wrap: wrap;
 }
 
-/* Alineación del dropdown */
 .delivery-status {
   min-width: 200px;
   margin-top: -4rem;
+}
+
+.moved-data {
+  position: fixed;
+  left: 130px;
 }
 
 @media (max-width: 768px) {
