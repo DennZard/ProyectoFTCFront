@@ -1,7 +1,6 @@
 <div class="page-wrapper animate__animated animate__fadeIn animate__faster">
   <p-card class="producto-card">
     <div class="producto-container">
-      <!-- Imagen -->
       <div class="producto-img-section">
         <form [formGroup]="productForm">
           <img
@@ -11,7 +10,7 @@
             [src]="
               displayedImage || 'assets/placeholder.png'
             "
-            alt="Imagen del producto"
+            alt="No se puede cargar la imagen"
             class="producto-img"
           />
           <input
@@ -24,7 +23,6 @@
         </form>
       </div>
 
-      <!-- Formulario -->
       <div class="producto-form-section">
         <form [formGroup]="productForm">
           <div class="form-columns">
@@ -49,7 +47,7 @@
                 placeholder="Precio"
                 formControlName="price"
               />
-              <p *ngIf="isValidField('price')">Campo requerido</p>
+              <p *ngIf="isValidField('price')">El precio no puede ser menor que 0</p>
 
               <span class="p-inputgroup-addon"
                 ><i class="pi pi-box"> Stock</i></span
@@ -60,7 +58,8 @@
                 placeholder="Stock"
                 formControlName="stock"
               />
-              <p *ngIf="isValidField('stock')">Campo requerido</p>
+              <small *ngIf="productForm.get('stock')?.errors?.['notInteger']">El stock debe ser un número entero.</small>
+              <p *ngIf="isValidField('stock')">El stock no puede ser menor que  0</p>
             </div>
 
             <div class="form-group">
@@ -70,7 +69,7 @@
                 placeholder="Categoría"
                 optionLabel="name"
               ></p-dropdown>
-              <p *ngIf="isValidField('categoryId')">Campo requerido</p>
+              <p *ngIf="isValidField('categoryId')">El producto tiene que ser de una categoria</p>
             </div>
           </div>
         </form>

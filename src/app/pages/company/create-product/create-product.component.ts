@@ -2,7 +2,7 @@ import { ProductService } from './../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../../services/category.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CompanyService } from '../../../services/company.service';
 import { CreateProduct } from '../../../core/interfaces/CreateProduct';
 import { User } from '../../../core/models/User';
@@ -29,10 +29,18 @@ export class CreateProductComponent implements OnInit {
     this.productForm = this.fb.group({
       name: ['', [Validators.required]],
       image: [''],
-      price: [[0], [Validators.required]],
-      stock: [[0], [Validators.required]],
-      category: [[0], [Validators.required]],
+      price: [[0], [Validators.required, Validators.min(0.01)]],
+      stock: [[0], [Validators.required, Validators.min(1)], this.integerValidator()],
+      category: [null, [Validators.required]],
     });
+  }
+
+  integerValidator(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const value = control.value;
+      if (value == null || value === '') return null;
+      return Number.isInteger(value) ? null : { notInteger: true };
+    };
   }
 
   updateImage(event: any): void {

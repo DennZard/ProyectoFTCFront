@@ -1,44 +1,54 @@
-<div class="page-wrapper" [ngClass]="{'moved-data' : sidebarOpen}">
+<div class="page-wrapper" [ngClass]="{ 'moved-data': sidebarOpen }">
   <div class="card-wrapper">
     <h1 class="title">Historial de Entregas</h1>
 
-    <div class="overflow-x-auto">
-      <table class="table-auto w-full border border-gray-300 rounded-lg shadow">
-        <thead>
-          <tr class="bg-gray-100 text-gray-700">
-            <th class="px-4 py-2">Fecha</th>
-            <th class="px-4 py-2">Estado</th>
-            <th class="px-4 py-2">Destino</th>
-            <th class="px-4 py-2">Producto</th>
-            <th class="px-4 py-2">Categoría</th>
-            <th class="px-4 py-2">Precio</th>
-            <th class="px-4 py-2">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let delivery of deliveries" class="hover:bg-gray-50">
-            <td class="border px-4 py-2">{{ delivery.added }}</td>
-            <td class="border px-4 py-2">{{ delivery.status.name }}</td>
-            <td class="border px-4 py-2">{{ delivery.destination }}</td>
-            <td class="border px-4 py-2">{{ delivery.product.name }}</td>
-            <td class="border px-4 py-2">{{ delivery.product.category.name }}</td>
-            <td class="border px-4 py-2">{{ delivery.product.price | currency:'EUR' }}</td>
-            <td class="border px-4 py-2 text-center space-x-2">
-              <button
-                class="btn-ver"
-                (click)="verDetalle(delivery.id)">
-                Ver
-              </button>
-              <button
-                class="btn-eliminar"
-                [disabled]="!delivery.status.cancelable"
-                (click)="cancelDelivery(delivery.id)">
-                Cancelar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <ng-container *ngIf="deliveries.length > 0; else noDeliveries">
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full border border-gray-300 rounded-lg shadow">
+          <thead>
+            <tr class="bg-gray-100 text-gray-700">
+              <th class="px-4 py-2">Fecha</th>
+              <th class="px-4 py-2">Estado</th>
+              <th class="px-4 py-2">Destino</th>
+              <th class="px-4 py-2">Producto</th>
+              <th class="px-4 py-2">Categoría</th>
+              <th class="px-4 py-2">Precio</th>
+              <th class="px-4 py-2">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let delivery of deliveries" class="hover:bg-gray-50">
+              <td class="border px-4 py-2">{{ delivery.added }}</td>
+              <td class="border px-4 py-2">{{ delivery.status.name }}</td>
+              <td class="border px-4 py-2">{{ delivery.destination }}</td>
+              <td class="border px-4 py-2">{{ delivery.product.name }}</td>
+              <td class="border px-4 py-2">{{ delivery.product.category.name }}</td>
+              <td class="border px-4 py-2">{{ delivery.product.price | currency:'EUR' }}</td>
+              <td class="border px-4 py-2 text-center space-x-2">
+                <button class="btn-ver" (click)="verDetalle(delivery.id)">Ver</button>
+                <button class="btn-eliminar" [disabled]="!delivery.status.cancelable" (click)="cancelDelivery(delivery.id)">
+                  Cancelar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
+    <ng-template #noDeliveries>
+      <div class="no-deliveries-card">
+        <div class="text-section">
+          <h2>No hay entregas registradas</h2>
+          <p>Actualmente no hay ninguna entrega disponible para mostrar.</p>
+        </div>
+        <div class="image-section">
+          <img src="assets/delayed.png" alt="Sin entregas" />
+        </div>
+        <button class="go-products-btn" routerLink="/main/producto/all">
+          Ir a productos
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>

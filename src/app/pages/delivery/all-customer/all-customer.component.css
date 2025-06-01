@@ -82,3 +82,49 @@ button[disabled] {
   position: fixed;
   left: 130px;
 }
+
+.no-deliveries-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-top: 2rem;
+  min-height: 300px;
+}
+
+.text-section {
+  flex: 1;
+}
+
+.text-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.image-section img {
+  width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.go-products-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.go-products-btn:hover {
+  background-color: #0056b3;
+}

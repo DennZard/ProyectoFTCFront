@@ -55,8 +55,8 @@ input[pInputText] {
 
 .position_btn_nuevoProducto {
   position: fixed;
-  right: 30px;
-  bottom: 13px;
+  right: 40px;
+  bottom: 9px;
 }
 
 .no-products-card {
